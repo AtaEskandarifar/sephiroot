@@ -1,462 +1,303 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-{% block title %}قیمت گذاری{% endblock %}
-{% block namespace %}page-pricing{% endblock %}
+
+{% block title %}Sephiroot | Pricing{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'css/pricing.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="sephi-pricing-page">
 
+    <!-- =========================================================
+         HERO / PAGE HEADER
+    ========================================================== -->
+    <section class="pricing-hero section-shell">
+        <div class="pricing-hero__bg" aria-hidden="true">
+            <span class="pricing-hero__aurora pricing-hero__aurora--one"></span>
+            <span class="pricing-hero__aurora pricing-hero__aurora--two"></span>
+            <span class="pricing-hero__grid"></span>
+            <span class="pricing-hero__scanline"></span>
+        </div>
 
-    <div class="sephi-pricing-page">
+        <div class="pricing-hero__content">
+            <div class="section-kicker">
+                <span class="section-kicker__line"></span>
+                <span class="section-kicker__text">SERVICE MATRIX // PRICING</span>
+            </div>
 
-        <!-- 1. CYBER TERMINAL HERO (PC TYPING SYSTEM) -->
-        <section class="pricing-hero pricing-hero-terminal">
-            <div class="terminal-window">
-                <!-- Terminal Top Header Bar -->
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="terminal-title">
-                        <span class="term-icon">⚡</span> root@sephiroot:~# ./init_architecture.sh --mode=production
-                    </div>
-                    <div class="terminal-status">
-                        <span class="status-indicator online"></span>
-                        <span class="status-text">SOC ONLINE</span>
-                    </div>
+            <h1 class="pricing-hero__title">
+                تعرفه خدمات <span>Sephiroot</span>
+            </h1>
+
+            <p class="pricing-hero__subtitle">
+                انتخاب مسیر مناسب برای طراحی وب‌سایت، فروشگاه اختصاصی و خدمات امنیتی.
+                هر بسته بر اساس نیاز واقعی پروژه تعریف شده و قابل سفارشی‌سازی است.
+            </p>
+
+            <div class="pricing-hero__meta">
+                <div class="meta-chip">
+                    <span class="meta-chip__label">STACK</span>
+                    <span class="meta-chip__value">Python / Django / UI Motion</span>
+                </div>
+                <div class="meta-chip">
+                    <span class="meta-chip__label">APPROACH</span>
+                    <span class="meta-chip__value">Modular / Secure / Performant</span>
+                </div>
+                <div class="meta-chip">
+                    <span class="meta-chip__label">DELIVERY</span>
+                    <span class="meta-chip__value">Scoped by requirements</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         CORPORATE SERVICES SECTION
+    ========================================================== -->
+    <section class="pricing-section pricing-section--corporate">
+        <div class="pricing-section__header">
+            <div class="section-kicker">
+                <span class="section-kicker__line"></span>
+                <span class="section-kicker__text">CORPORATE SERVICES</span>
+            </div>
+
+            <h2 class="pricing-section__title">خدمات شرکتی و برندینگ دیجیتال</h2>
+            <p class="pricing-section__description">
+                مناسب برای متخصصان، شرکت‌ها و کسب‌وکارهایی که به یک حضور حرفه‌ای، سریع، امن و قابل توسعه نیاز دارند.
+            </p>
+        </div>
+
+        <div class="service-terminal" data-service-terminal="corporate">
+            <div class="service-terminal__header">
+                <div class="terminal-dots" aria-hidden="true">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
                 </div>
 
-                <!-- Terminal Body Content -->
-                <div class="terminal-body">
-                    <!-- Terminal System Logs -->
-                    <div class="terminal-sys-log">
-                        <p class="log-line"><span class="log-prefix">[SYS_INIT]</span> Loading Sephiroot Cyber Core v3.0...</p>
-                        <p class="log-line"><span class="log-prefix">[HARDENING]</span> OWASP Top 10 Firewall Rules: <span class="text-green">ENABLED</span></p>
-                        <p class="log-line"><span class="log-prefix">[STACK]</span> Python 3.12 | Django REST | Nginx Proxy | Splunk SIEM</p>
-                    </div>
+                <span class="service-terminal__path">
+                    root@sephiroot:~/services/corporate
+                </span>
 
-                    <div class="terminal-divider"></div>
+                <span class="service-terminal__status">
+                    <span class="status-indicator online"></span>
+                    PACKAGE_READY
+                </span>
+            </div>
 
-                    <!-- Main Dynamic Content (Typing Area) -->
-                    <div class="terminal-main-output">
-                        <div class="terminal-prompt-line">
-                            <span class="prompt-symbol">sephiroot@system:~$</span>
-                            <span class="prompt-cmd typewriter-cmd" data-text="execute --service architecture_core"></span>
+            <div class="service-terminal__body">
+                <div class="service-terminal__command">
+                    <span>sephiroot@system:~$</span>
+                    <code class="service-terminal__command-text"></code>
+                </div>
+
+                <div class="service-terminal__output">
+                    <span class="service-terminal__kicker"></span>
+                    <h3 class="service-terminal__title"></h3>
+                    <p class="service-terminal__description"></p>
+
+                    <div class="service-terminal__details">
+                        <div>
+                            <span>INVESTMENT</span>
+                            <strong class="service-terminal__price"></strong>
                         </div>
-
-                        <div class="terminal-content-box">
-                            <span class="cyber-kicker-badge" id="term-kicker">FULL-STACK // CYBER DEFENSE</span>
-
-                            <h1 class="pricing-title term-typewriter" id="term-title"
-                                data-text="تعرفه و خدمات ساخت سامانه‌های اختصاصی و زره‌پوش امنیتی">
-                            </h1>
-
-                            <p class="pricing-subtitle term-typewriter-sub" id="term-subtitle"
-                               data-text="توسعه فول‌استک با پایتون و جنگو، ایمن‌سازی لایه‌ای بر پایه استاندارد OWASP Top 10 و پیاده‌سازی زیرساخت‌های مقاوم در برابر نفوذ.">
-                            </p>
+                        <div>
+                            <span>DELIVERY</span>
+                            <strong class="service-terminal__duration"></strong>
                         </div>
-                    </div>
-
-                    <!-- Command Buttons (PC Mode Controls) -->
-                    <div class="terminal-actions">
-                        <div class="actions-label">[SELECT COMMAND MODULE]:</div>
-                        <div class="command-buttons">
-                            <button class="cmd-btn active" data-mode="fullstack">
-                                <span class="cmd-code">01</span>
-                                <span class="cmd-name">FULLSTACK_DEV</span>
-                            </button>
-                            <button class="cmd-btn" data-mode="pentest">
-                                <span class="cmd-code">02</span>
-                                <span class="cmd-name">PENTEST_OWASP</span>
-                            </button>
-                            <button class="cmd-btn" data-mode="soc">
-                                <span class="cmd-code">03</span>
-                                <span class="cmd-name">SIEM_SOC_DEPLOY</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Terminal Footer HUD Stats -->
-                <div class="terminal-footer">
-                    <div class="hud-stat">
-                        <span class="hud-label">STATUS:</span>
-                        <span class="hud-value text-green">200 OK</span>
-                    </div>
-                    <div class="hud-stat">
-                        <span class="hud-label">LATENCY:</span>
-                        <span class="hud-value text-cyan">12ms</span>
-                    </div>
-                    <div class="hud-stat">
-                        <span class="hud-label">ENCRYPTION:</span>
-                        <span class="hud-value text-gold">AES-256 GCM</span>
-                    </div>
-                    <div class="hud-stat">
-                        <span class="hud-label">SECURITY SCORE:</span>
-                        <span class="hud-value text-green">A+ (OWASP CERTIFIED)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- 2. PERSONAL & CORPORATE SECTION -->
-        <section class="pricing-section corporate-section">
-            <div class="section-title-wrapper align-right">
-                <div class="hud-tag">[IDENTITY & BRANDING]</div>
-                <h2>توسعه وب‌سایت‌های پرسونال، شرکتی و معرفی خدمات</h2>
-                <p>چرا پزشکان، وکلا، مدیران، متخصصین و سازمان‌ها به وب‌سایت اختصاصی نیاز دارند؟</p>
-            </div>
-
-            <!-- Dynamic Visual Showcase Box -->
-            <div class="hud-showcase-card">
-                <div class="hud-scanline"></div>
-                <div class="hud-overlay-text">
-                    <span class="hud-code">STATUS: SECURE_CORE_ONLINE</span>
-                    <h3>قدرت‌نمایی دیجیتال بدون وابستگی به شبکه‌های اجتماعی</h3>
-                    <p>
-                        محدودیت‌های اینستاگرام و پلتفرم‌های خارجی اثبات کرده که داشتن یک پایگاه اختصاصی و استراتژیک روی وب، تنها راه بقا و پرستیژ کاری متخصصین و شرکت‌ها است. اعتبار رزومه، نوبت‌دهی، ارائه نمونه کار و پرزنت خدمات با بالاترین سرعت و زیبایی بصری.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Corporate Packages Grid (3 Cards) -->
-            <div class="pricing-grid">
-                <!-- Bronze Package -->
-                <div class="pricing-card" data-package="bronze">
-                    <div class="card-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag">BRONZE // PERSONAL</span>
-                        <h3>پکیج شخصی و برندینگ (CV)</h3>
-                        <p>مناسب وکلا، پزشکان، استادتاران، فریلنسرها و رزومه پرسونال</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">سرمایه‌گذاری پروژه</span>
-                        <div class="price-amount">۵۹,۰۰۰,۰۰۰ <span>تومان</span></div>
-                        <span class="price-sub">پایدار، مدرن و پرسرعت</span>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> طراحی اختصاصی UI/UX مدرن در فیگما</li>
-                        <li><i class="icon-check"></i> پیاده‌سازی رزومه تعاملی و پرزنت نمونه‌کارها</li>
-                        <li><i class="icon-check"></i> بهینه‌سازی ۱۰۰٪ سرعت و سئوی فنی (Core Web Vitals)</li>
-                        <li><i class="icon-check"></i> فرم‌های ارتباطی ایمن با قابلیت Anti-Spam</li>
-                        <li><i class="icon-check"></i> اتصال مستقیم به شبکه‌های اجتماعی و لینک‌های ارتباطی</li>
-                    </ul>
-                    <a href="#workflow" class="btn-pricing-action">ثبت سفارش BRONZE</a>
-                </div>
-
-                <!-- Silver Package -->
-                <div class="pricing-card featured" data-package="silver-corp">
-                    <div class="card-badge">پیشنهادی شرکت‌ها</div>
-                    <div class="card-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag">SILVER // BUSINESS</span>
-                        <h3>پکیج شرکتی و معرفی خدمات</h3>
-                        <p>مناسب شرکت‌های متوسط، بازرگانی، کلینیک‌ها و دفاتر مهندسی</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">سرمایه‌گذاری پروژه</span>
-                        <div class="price-amount">۸۹,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> تمام امکانات پکیج برنز</li>
-                        <li><i class="icon-check"></i> سیستم چندزبانه (Multilingual) جهت صادرات و برندینگ</li>
-                        <li><i class="icon-check"></i> سیستم کاتالوگ آنلاین و مدیریت خدمات متحرک</li>
-                        <li><i class="icon-check"></i> سیستم احراز هویت و ورود امن مشتریان (OTP/SMS)</li>
-                        <li><i class="icon-check"></i> ۶ ماه پشتیبانی فنی و مانیتورینگ امنیتی</li>
-                    </ul>
-                    <a href="#workflow" class="btn-pricing-action highlight">ثبت سفارش SILVER</a>
-                </div>
-
-                <!-- Gold Package -->
-                <div class="pricing-card enterprise" data-package="gold-corp">
-                    <div class="card-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag">GOLD // ENTERPRISE</span>
-                        <h3>سامانه اختصاصی جنگو و داشبورد مدیریتی</h3>
-                        <p>توسعه فول‌استک اختصاصی برای سازمان‌ها و پروژه‌های پیچیده</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">سرمایه‌گذاری پروژه</span>
-                        <div class="price-amount">۱۹۹,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> معماری اختصاصی Python / Django REST API</li>
-                        <li><i class="icon-check"></i> داشبورد مدیریتی اختصاصی (Admin Panel پیشرفته)</li>
-                        <li><i class="icon-check"></i> کانفیگ CDN، Nginx Reverse Proxy و SSL نظامی</li>
-                        <li><i class="icon-check"></i> تست نفوذ اولیه OWASP Top 10 قبل از تحویل</li>
-                        <li><i class="icon-check"></i> ۶ ماه پشتیبانی امنیتی و فنی لایه‌ای ۲۴/۷</li>
-                    </ul>
-                    <a href="#workflow" class="btn-pricing-action">ثبت سفارش GOLD</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. E-COMMERCE SECTION -->
-        <section class="pricing-section ecommerce-section">
-            <div class="section-title-wrapper align-right">
-                <div class="hud-tag">[COMMERCE ENGINE]</div>
-                <h2>سامانه‌های فروشگاهی و چندفروشندگی (Marketplace)</h2>
-                <p>زیرساخت فروش بدون قطعی، بدون افت سرعت و ایمن در برابر نفوذ</p>
-            </div>
-
-            <div class="ecom-info-banner">
-                <p>
-                    <strong>چرا فروشگاه‌های وردپرسی و کند شکست می‌خورند؟</strong> قطعی در کمپین‌های تخفیف، باگ‌های درگاه پرداخت، هک شدن اطلاعات مشتریان و کندی در بارگذاری هزاران محصول. فروشگاه‌های ما با معماری بهینه‌سازی شده دیتابیس، توانایی پردازش هزاران تراکنش همزمان را دارند.
-                </p>
-            </div>
-
-            <!-- E-Commerce Grid (2 Cards) -->
-            <div class="pricing-grid grid-2-col">
-                <!-- E-Com Silver -->
-                <div class="pricing-card featured" data-package="ecom-silver">
-                    <div class="card-badge">محبوب‌ترین</div>
-                    <div class="card-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag">E-COMMERCE // SINGLE STORE</span>
-                        <h3>فروشگاه اختصاصی و پرسرعت</h3>
-                        <p>مناسب فروشگاه‌های مستقل، برندهای لباس، لوازم خانگی و فروش آنلاین</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">سرمایه‌گذاری پروژه</span>
-                        <div class="price-amount">۱۰۵,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> اتصال هوشمند به ترب، ایمالز، باسلام و دیجی‌کالا</li>
-                        <li><i class="icon-check"></i> درگاه پرداخت مستقیم بانکی و زرین‌پال عاری از باگ Callback</li>
-                        <li><i class="icon-check"></i> سیستم انبارداری، فیلتر پیشرفته محصولات و صدور فاکتور</li>
-                        <li><i class="icon-check"></i> اتصال به پنل‌های پیامکی برای ارسال وضعیت سفارش</li>
-                        <li><i class="icon-check"></i> دریافت اینماد رسمی و ساماندهی</li>
-                    </ul>
-                    <a href="#workflow" class="btn-pricing-action highlight">شروع فروشگاهی SILVER</a>
-                </div>
-
-                <!-- E-Com Gold Multi Vendor -->
-                <div class="pricing-card enterprise" data-package="ecom-gold">
-                    <div class="card-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag">MARKETPLACE // MULTI-VENDOR</span>
-                        <h3>پلتفرم چندفروشندگی (مشابه دیجی‌کالا)</h3>
-                        <p>سامانه مقیاس‌پذیر غول‌پیکر با پنل مجزا برای فروشندگان متعدد</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">سرمایه‌گذاری پروژه</span>
-                        <div class="price-amount">۲۹۹,۰۰۰,۰۰۰ <span>تومان</span></div>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> سیستم مدیریت فروشندگان (Multi-Vendor Admin / Vendor Panel)</li>
-                        <li><i class="icon-check"></i> تسویه حساب خودکار، محاسبه کمیسیون و گزارشات مالی</li>
-                        <li><i class="icon-check"></i> معماری Microservices / Celery Queue برای پردازش‌های سنگین</li>
-                        <li><i class="icon-check"></i> زیرساخت ابری پایدار با پهنای باند و سرعت نامحدود</li>
-                        <li><i class="icon-check"></i> ۱ سال مانیتورینگ امنیتی و پشتیبانی فنی اختصاصی</li>
-                    </ul>
-                    <a href="#workflow" class="btn-pricing-action">ارزیابی پروژه MARKETPLACE</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. OFFENSIVE SECURITY & SOC SECTION -->
-        <section class="pricing-section security-services-section">
-            <div class="section-title-wrapper align-center">
-                <div class="hud-tag red-team">[RED TEAM / BLUE TEAM CYBER DIVISION]</div>
-                <h2>خدمات تخصصی تست نفوذ، هک قانونمند و مانیتورینگ SOC</h2>
-                <p>چرا هر وب‌اپلیکیشنی قبل از فاجعه، نیاز به تست نفوذ و پایش زنده دارد؟</p>
-            </div>
-
-            <div class="cyber-concept-grid">
-                <div class="concept-card">
-                    <h4><i class="icon-warning"></i> هک چیست و چگونه بیزنس شما را نابود می‌کند؟</h4>
-                    <p>
-                        هکرها با کشف کوچکترین باگ منطقی در کدها (SQLi, XSS, RCE, IDOR)، اطلاعات مشتریان شما را سرقت کرده، دیتابیس را پاک می‌کنند یا درگاه پرداخت را دور می‌زنند. هزینه جبران خسارت هک، ۱۰ برابر بیشتر از ایمن‌سازی پیشگیرانه است.
-                    </p>
-                </div>
-                <div class="concept-card">
-                    <h4><i class="icon-shield"></i> نقش من: کلاه سفید (White Hat) و شکارچی آسیب‌پذیری</h4>
-                    <p>
-                        من به عنوان یک متخصص امنیت شبکه و وب، سیستم شما را دقیقا با متدولوژی هکرهای کلاه سیاه مورد حمله تست قرار می‌دهم (Pentest)، باگ‌ها را کشف و قبل از نفوذ مهاجمین، آن‌ها را ترمیم و زره‌پوش می‌کنم.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Security Services Grid (2 Cards) -->
-            <div class="pricing-grid grid-2-col cyber-grid">
-                <!-- White Hat Pentest -->
-                <div class="pricing-card hacker-card">
-                    <div class="card-glow red-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag red-tag">OFFENSIVE SECURITY // RED TEAM</span>
-                        <h3>تست نفوذ و ارزیابی آسیب‌پذیری (Pentest)</h3>
-                        <p>بررسی نفوذپذیری وب‌اپلیکیشن، API و سرورها همراه با گزارش رسمی</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">شروع قیمت تست نفوذ از</span>
-                        <div class="price-amount red-text">۷۹,۵۰۰,۰۰۰ <span>تومان</span></div>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> تست کامل متدولوژی OWASP Top 10 (SQLi, XSS, CSRF, BAC, etc.)</li>
-                        <li><i class="icon-check"></i> بررسی باگ‌های منطق کسب‌وکار (Business Logic Vulnerabilities)</li>
-                        <li><i class="icon-check"></i> ارائه گزارش مدیریتی و فنی با سطح خطر (CVSS Score)</li>
-                        <li><i class="icon-check"></i> ارائه راهکارهای دقیق کدنویسی برای رفع تمام باگ‌ها (Remediation)</li>
-                        <li><i class="icon-check"></i> تست مجدد (Re-test) رایگان پس از برطرف کردن باگ‌ها</li>
-                    </ul>
-                    <a href="https://t.me/sephiroot" target="_blank" class="btn-pricing-action red-btn">ثبت درخواست تست نفوذ</a>
-                </div>
-
-                <!-- Splunk SIEM Deployment -->
-                <div class="pricing-card soc-card">
-                    <div class="card-glow blue-glow"></div>
-                    <div class="card-header">
-                        <span class="card-tag blue-tag">DEFENSIVE SOC // BLUE TEAM</span>
-                        <h3>پیاده‌سازی مرکز عملیات امنیت (Splunk SIEM)</h3>
-                        <p>پایش زنده لاگ‌ها، کشف نفوذ در لحظه و سیستم هشداردهی هوشمند</p>
-                    </div>
-                    <div class="card-price">
-                        <span class="price-label">تعرفه و استعلام زیرساخت</span>
-                        <div class="price-amount blue-text">نیازمند مشاوره <span>(Custom)</span></div>
-                    </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> راه اندازی و کانفیگ اختصاصی پلتفرم Splunk Enterprise</li>
-                        <li><i class="icon-check"></i> جمع‌آوری و فیلتر لاگ‌های سرور لینوکس، Nginx، دیتابیس و Django</li>
-                        <li><i class="icon-check"></i> نوشتن Rules & Alerts اختصاصی جهت تشخیص حملات Brute-Force و DoS</li>
-                        <li><i class="icon-check"></i> ایجاد داشبوردهای زنده گرافیکی برای تحلیل رفتارهای مشکوک شبکه</li>
-                        <li><i class="icon-check"></i> اتصال به سیستم هشدار تلگرام/ایمیل جهت واکنش سریع به حملات</li>
-                    </ul>
-                    <a href="https://t.me/sephiroot" target="_blank" class="btn-pricing-action blue-btn">مشاوره پیاده‌سازی SIEM</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. WORKFLOW & SUCCESS SECTION -->
-        <section class="calculator-section" id="workflow">
-            <div class="calc-container">
-                <div class="calc-header">
-                    <h2>فرآیند اجرای پروژه و تضمین موفقیت</h2>
-                    <p>از اولین خط کد تا استقرار نهایی در زیرساخت‌های امن لینوکسی</p>
-                </div>
-
-                <div class="calc-body">
-                    <div class="calc-options-grid success-steps">
-                        <div class="radio-content success-card">
-                            <span class="card-tag">GATHERING [01]</span>
-                            <span class="title">تحلیل و مستندسازی</span>
-                            <p class="desc">بررسی دقیق بیزنس‌پلن و استخراج نیازهای فنی پروژه قبل از شروع کدنویسی.</p>
-                        </div>
-                        <div class="radio-content success-card">
-                            <span class="card-tag">ENGINEERING [02]</span>
-                            <span class="title">توسعه و امنیت (SOC)</span>
-                            <p class="desc">کدنویسی استاندارد با معماری Clean Code و ایمن‌سازی بر اساس متدولوژی OWASP.</p>
-                        </div>
-                        <div class="radio-content success-card">
-                            <span class="card-tag">DEPLOYMENT [03]</span>
-                            <span class="title">استقرار و مانیتورینگ</span>
-                            <p class="desc">دیپلوی روی سرورهای اختصاصی با مانیتورینگ ۲۴ ساعته لایه امنیت و آپتایم.</p>
+                        <div>
+                            <span>SUPPORT</span>
+                            <strong class="service-terminal__support"></strong>
                         </div>
                     </div>
 
-                    <div class="calc-result-box success-result">
-                        <div class="result-details">
-                            <span class="result-title">آماده شروع یک همکاری حرفه‌ای هستید؟</span>
-                            <a href="https://t.me/sephiroot" target="_blank" class="btn-pricing-action highlight">
-                                ثبت درخواست مشاوره رایگان
-                            </a>
+                    <ul class="service-terminal__deliverables"></ul>
+                </div>
+
+                <div class="service-terminal__actions" role="tablist" aria-label="پکیج‌های شرکتی">
+                    <button type="button" class="service-package-btn active" data-package-key="bronze">
+                        <span>01</span> BRONZE
+                    </button>
+                    <button type="button" class="service-package-btn" data-package-key="silver">
+                        <span>02</span> SILVER
+                    </button>
+                    <button type="button" class="service-package-btn" data-package-key="gold">
+                        <span>03</span> GOLD
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         COMMERCE SECTION
+    ========================================================== -->
+    <section class="pricing-section pricing-section--commerce">
+        <div class="pricing-section__header">
+            <div class="section-kicker">
+                <span class="section-kicker__line"></span>
+                <span class="section-kicker__text">ECOMMERCE SERVICES</span>
+            </div>
+
+            <h2 class="pricing-section__title">فروشگاه اختصاصی و زیرساخت تجارت الکترونیک</h2>
+            <p class="pricing-section__description">
+                برای فروشگاه‌های مستقل یا چندفروشندگی که به معماری تمیز، پرداخت امن، مدیریت سفارش و توسعه آینده‌محور نیاز دارند.
+            </p>
+        </div>
+
+        <div class="service-terminal service-terminal--commerce" data-service-terminal="commerce">
+            <div class="service-terminal__header">
+                <div class="terminal-dots" aria-hidden="true">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+
+                <span class="service-terminal__path">
+                    root@sephiroot:~/services/commerce
+                </span>
+
+                <span class="service-terminal__status">
+                    <span class="status-indicator online"></span>
+                    COMMERCE_CORE_READY
+                </span>
+            </div>
+
+            <div class="service-terminal__body">
+                <div class="service-terminal__command">
+                    <span>sephiroot@system:~$</span>
+                    <code class="service-terminal__command-text"></code>
+                </div>
+
+                <div class="service-terminal__output">
+                    <span class="service-terminal__kicker"></span>
+                    <h3 class="service-terminal__title"></h3>
+                    <p class="service-terminal__description"></p>
+
+                    <div class="service-terminal__details">
+                        <div>
+                            <span>INVESTMENT</span>
+                            <strong class="service-terminal__price"></strong>
                         </div>
-                        <div class="result-notes">
-                            <p>تمام پروژه‌ها دارای ۶ ماه پشتیبانی فنی رایگان و مانیتورینگ امنیتی لایه‌ای هستند.</p>
+                        <div>
+                            <span>DELIVERY</span>
+                            <strong class="service-terminal__duration"></strong>
+                        </div>
+                        <div>
+                            <span>SUPPORT</span>
+                            <strong class="service-terminal__support"></strong>
                         </div>
                     </div>
+
+                    <ul class="service-terminal__deliverables"></ul>
+                </div>
+
+                <div class="service-terminal__actions" role="tablist" aria-label="پکیج‌های فروشگاهی">
+                    <button type="button" class="service-package-btn active" data-package-key="store">
+                        <span>01</span> SINGLE_STORE
+                    </button>
+                    <button type="button" class="service-package-btn" data-package-key="marketplace">
+                        <span>02</span> MARKETPLACE
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 6. ARCANE SECURITY FEATURES GRID (6 Cards) -->
-        <section class="security-features-section">
-            <div class="section-title-wrapper">
-                <h2>استانداردهای ثابت فنی و زیرساختی Sephiroot</h2>
-                <p>قابلیت‌های پایه که روی تمام پروژه‌های تحویلی بدون هزینه اضافی اعمال می‌شوند</p>
+    <!-- =========================================================
+         SECURITY SECTION
+    ========================================================== -->
+    <section class="pricing-section pricing-section--security">
+        <div class="pricing-section__header">
+            <div class="section-kicker">
+                <span class="section-kicker__line"></span>
+                <span class="section-kicker__text">SECURITY SERVICES</span>
             </div>
 
-            <div class="features-grid features-grid--arcane">
+            <h2 class="pricing-section__title">خدمات امنیت وب و عملیات SOC</h2>
+            <p class="pricing-section__description">
+                برای ارزیابی امنیت مجاز، تست نفوذ کنترل‌شده و راه‌اندازی مانیتورینگ امنیتی مبتنی بر Splunk و SIEM.
+            </p>
+        </div>
 
-                <div class="feature-card feature-card--arcane">
-                    <div class="feature-top">
-                        <div class="feature-icon">[OWASP]</div>
-                        <div class="feature-badge">HARDENING</div>
-                    </div>
-                    <h3>تست نفوذ OWASP Top 10</h3>
-                    <p>ارزیابی SQLi / XSS / CSRF / BAC + چک‌لیست تحویل، قبل از استقرار.</p>
-                    <div class="feature-meta">
-                        <span>Vuln Scan</span><span>Threat Model</span><span>Fix Guidance</span>
-                    </div>
+        <div class="service-terminal service-terminal--security" data-service-terminal="security">
+            <div class="service-terminal__header">
+                <div class="terminal-dots" aria-hidden="true">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
                 </div>
 
-                <div class="feature-card feature-card--arcane">
-                    <div class="feature-top">
-                        <div class="feature-icon">[DEVOPS]</div>
-                        <div class="feature-badge">DEPLOY</div>
-                    </div>
-                    <h3>Reverse Proxy + CDN + TLS</h3>
-                    <p>کانفیگ Nginx/Cloudflare، HTTPS صحیح، هدرهای امنیتی و کشینگ هوشمند.</p>
-                    <div class="feature-meta">
-                        <span>Nginx</span><span>Cloudflare</span><span>Headers</span>
-                    </div>
-                </div>
+                <span class="service-terminal__path">
+                    root@sephiroot:~/services/security
+                </span>
 
-                <div class="feature-card feature-card--arcane">
-                    <div class="feature-top">
-                        <div class="feature-icon">[API]</div>
-                        <div class="feature-badge">SYNC</div>
-                    </div>
-                    <h3>اتصال به مارکت‌پلیس‌ها</h3>
-                    <p>همگام‌سازی محصولات/قیمت/موجودی با ترب، ایمالز، باسلام و… بدون افت کارایی.</p>
-                    <div class="feature-meta">
-                        <span>Webhooks</span><span>Queues</span><span>Rate-limit</span>
-                    </div>
-                </div>
-
-                <div class="feature-card feature-card--arcane">
-                    <div class="feature-top">
-                        <div class="feature-icon">[PAYMENT]</div>
-                        <div class="feature-badge">SECURE</div>
-                    </div>
-                    <h3>درگاه پرداخت امن و بدون باگ</h3>
-                    <p>پیاده‌سازی پرداخت با کنترل دقیق Callback، Validation و جلوگیری از سوءاستفاده.</p>
-                    <div class="feature-meta">
-                        <span>Validation</span><span>Anti-Fraud</span><span>Logging</span>
-                    </div>
-                </div>
-
-                <div class="feature-card feature-card--arcane">
-                    <div class="feature-top">
-                        <div class="feature-icon">[PERF]</div>
-                        <div class="feature-badge">SPEED</div>
-                    </div>
-                    <h3>بهینه‌سازی سرعت و Core Web Vitals</h3>
-                    <p>بهینه‌سازی Queryها، کش، assets و معماری front برای لود سریع و پایدار.</p>
-                    <div class="feature-meta">
-                        <span>Cache</span><span>DB Tuning</span><span>Lazy Load</span>
-                    </div>
-                </div>
-
-                <div class="feature-card feature-card--arcane">
-                    <div class="feature-top">
-                        <div class="feature-icon">[SOC]</div>
-                        <div class="feature-badge">MONITOR</div>
-                    </div>
-                    <h3>لاگینگ، مانیتورینگ و Alerting</h3>
-                    <p>ثبت رویدادهای امنیتی و عملیاتی + هشداردهی برای رفتارهای مشکوک و خطاهای بحرانی.</p>
-                    <div class="feature-meta">
-                        <span>SIEM-ready</span><span>Alerts</span><span>Audit</span>
-                    </div>
-                </div>
-
+                <span class="service-terminal__status">
+                    <span class="status-indicator online"></span>
+                    AEGIS_ACTIVE
+                </span>
             </div>
-        </section>
 
-    </div>
+            <div class="service-terminal__body">
+                <div class="service-terminal__command">
+                    <span>sephiroot@system:~$</span>
+                    <code class="service-terminal__command-text"></code>
+                </div>
 
+                <div class="service-terminal__output">
+                    <span class="service-terminal__kicker"></span>
+                    <h3 class="service-terminal__title"></h3>
+                    <p class="service-terminal__description"></p>
 
+                    <div class="service-terminal__details">
+                        <div>
+                            <span>INVESTMENT</span>
+                            <strong class="service-terminal__price"></strong>
+                        </div>
+                        <div>
+                            <span>DELIVERY</span>
+                            <strong class="service-terminal__duration"></strong>
+                        </div>
+                        <div>
+                            <span>OUTPUT</span>
+                            <strong class="service-terminal__support"></strong>
+                        </div>
+                    </div>
 
+                    <ul class="service-terminal__deliverables"></ul>
+                </div>
 
+                <div class="service-terminal__actions" role="tablist" aria-label="خدمات امنیتی">
+                    <button type="button" class="service-package-btn active" data-package-key="pentest">
+                        <span>01</span> PENTEST
+                    </button>
+                    <button type="button" class="service-package-btn" data-package-key="soc">
+                        <span>02</span> SPLUNK_SIEM
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- =========================================================
+         ADDITIONAL INFO / CTA
+    ========================================================== -->
+    <section class="pricing-section pricing-section--cta">
+        <div class="pricing-cta">
+            <h2 class="pricing-cta__title">نیاز به برآورد دقیق‌تر دارید؟</h2>
+            <p class="pricing-cta__description">
+                اگر پروژه شما ساختار ویژه، محدودیت زمانی، یا نیازهای امنیتی خاص دارد،
+                می‌توانیم یک Scope سفارشی برای آن تعریف کنیم.
+            </p>
 
+            <div class="pricing-cta__actions">
+                <a href="{% url 'contacts:contacts' %}" class="btn btn-primary">شروع گفتگو</a>
+                <a href="{% url 'services:services' %}" class="btn btn-secondary">مشاهده خدمات</a>
+            </div>
+        </div>
+    </section>
+
+</div>
 {% endblock %}

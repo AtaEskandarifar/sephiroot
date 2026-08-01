@@ -2,108 +2,154 @@
     "use strict";
 
     const EducationModule = {
-        cleanupFns: [],
+        root: null,
         observers: [],
+        cleanupFns: [],
+        animationFrame: null,
 
         init(container = document) {
-            const root = container.querySelector(".sephi-education-page");
-            if (!root) return null;
-
             this.destroy();
+
+            const root = container.querySelector(".sephi-education-page");
+
+            if (!root) {
+                return;
+            }
+
             this.root = root;
 
             this.initReveal(root);
             this.initSkillBars(root);
-            this.initTilt(root);
-
-            return () => this.destroy();
+            this.initParallax(root);
         },
 
         destroy() {
-            this.cleanupFns.forEach((fn) => {
-                try { fn(); } catch (e) {}
-            });
+            this.observers.forEach((observer) => observer.disconnect());
+            this.observers = [];
+
+            this.cleanupFns.forEach((cleanup) => cleanup());
             this.cleanupFns = [];
 
-            this.observers.forEach((observer) => {
-                try { observer.disconnect(); } catch (e) {}
-            });
-            this.observers = [];
+            if (this.animationFrame) {
+                window.cancelAnimationFrame(this.animationFrame);
+                this.animationFrame = null;
+            }
+
+            if (this.root) {
+                this.root.style.removeProperty("--edu-pointer-x");
+                this.root.style.removeProperty("--edu-pointer-y");
+            }
 
             this.root = null;
         },
 
+        prefersReducedMotion() {
+            return window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+        },
+
         initReveal(root) {
-            const items = root.querySelectorAll(
-                ".single-info-item, .education-timeline, .language-card, .expertise__single"
-            );
+            const elements = [
+                ...root.querySelectorAll(".reveal-block"),
+                ...root.querySelectorAll(".reveal-item"),
+                ...root.querySelectorAll(".expertise__single"),
+            ];
 
-            if (!items.length) return;
+            if (!elements.length) {
+                return;
+            }
 
-            if (!("IntersectionObserver" in window)) {
-                items.forEach((el) => el.classList.add("is-visible"));
+            if (
+                this.prefersReducedMotion() ||
+                !("IntersectionObserver" in window)
+            ) {
+                elements.forEach((element) => {
+                    element.classList.add("is-visible");
+                });
+
                 return;
             }
 
             const observer = new IntersectionObserver(
-                (entries) => {
+                (entries, currentObserver) => {
                     entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("is-visible");
-                            observer.unobserve(entry.target);
+                        if (!entry.isIntersecting) {
+                            return;
                         }
+
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
                     });
                 },
                 {
-                    threshold: 0.14,
-                    rootMargin: "0px 0px -40px 0px"
+                    root: null,
+                    rootMargin: "0px 0px -8% 0px",
+                    threshold: 0.12,
                 }
             );
 
-            items.forEach((item) => observer.observe(item));
+            elements.forEach((element) => observer.observe(element));
             this.observers.push(observer);
         },
 
         initSkillBars(root) {
-            const bars = root.querySelectorAll(".progress-bar");
-            if (!bars.length) return;
+            const bars = [...root.querySelectorAll(".progress-bar")];
 
-            const setTargetWidth = (bar) => {
-                const ariaValue = parseInt(bar.getAttribute("aria-valuenow"), 10);
-                const inlineWidth = bar.style.width;
-                const match = inlineWidth.match(/(\d+)%/);
-                const fallback = match ? parseInt(match[1], 10) : 0;
-                const target = Number.isFinite(ariaValue) ? ariaValue : fallback;
+            if (!bars.length) {
+                return;
+            }
 
-                bar.dataset.targetWidth = target;
+            bars.forEach((bar) => {
+                const ariaValue = Number(bar.getAttribute("aria-valuenow"));
+                const inlineWidth = Number.parseFloat(bar.style.width);
+                const targetWidth = Number.isFinite(ariaValue)
+                    ? ariaValue
+                    : inlineWidth || 0;
+
+                bar.dataset.targetWidth = String(targetWidth);
                 bar.style.width = "0%";
+            });
+
+            const animateBar = (bar) => {
+                const targetWidth = Number(bar.dataset.targetWidth || 0);
+
+                window.requestAnimationFrame(() => {
+                    bar.style.width = `${targetWidth}%`;
+                });
             };
 
-            bars.forEach(setTargetWidth);
-
-            if (!("IntersectionObserver" in window)) {
-                bars.forEach((bar) => {
-                    bar.style.width = `${bar.dataset.targetWidth || 0}%`;
-                });
+            if (
+                this.prefersReducedMotion() ||
+                !("IntersectionObserver" in window)
+            ) {
+                bars.forEach(animateBar);
                 return;
             }
 
             const observer = new IntersectionObserver(
-                (entries) => {
+                (entries, currentObserver) => {
                     entries.forEach((entry) => {
-                        if (!entry.isIntersecting) return;
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
 
                         const bar = entry.target;
-                        const target = bar.dataset.targetWidth || "0";
-                        requestAnimationFrame(() => {
-                            bar.style.width = `${target}%`;
-                        });
 
-                        observer.unobserve(bar);
+                        if (bar.dataset.animated === "true") {
+                            currentObserver.unobserve(bar);
+                            return;
+                        }
+
+                        bar.dataset.animated = "true";
+                        animateBar(bar);
+                        currentObserver.unobserve(bar);
                     });
                 },
                 {
-                    threshold: 0.35
+                    root: null,
+                    rootMargin: "0px 0px -10% 0px",
+                    threshold: 0.25,
                 }
             );
 
@@ -111,40 +157,103 @@
             this.observers.push(observer);
         },
 
-        initTilt(root) {
-            const cards = root.querySelectorAll(".education-timeline, .language-card, .single-info-item");
-            if (!cards.length) return;
+        initParallax(root) {
+            const supportsFinePointer = window.matchMedia(
+                "(hover: hover) and (pointer: fine)"
+            ).matches;
 
-            cards.forEach((card) => {
-                const handleMove = (e) => {
-                    if (window.innerWidth < 992) return;
+            if (this.prefersReducedMotion() || !supportsFinePointer) {
+                return;
+            }
 
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+            let pointerX = 0;
+            let pointerY = 0;
+            let targetX = 0;
+            let targetY = 0;
 
-                    const rotateY = ((x / rect.width) - 0.5) * 5;
-                    const rotateX = ((y / rect.height) - 0.5) * -5;
+            const updateParallax = () => {
+                pointerX += (targetX - pointerX) * 0.1;
+                pointerY += (targetY - pointerY) * 0.1;
 
-                    card.style.transform =
-                        `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
-                };
+                root.style.setProperty(
+                    "--edu-pointer-x",
+                    `${pointerX.toFixed(2)}px`
+                );
 
-                const handleLeave = () => {
-                    card.style.transform = "";
-                };
+                root.style.setProperty(
+                    "--edu-pointer-y",
+                    `${pointerY.toFixed(2)}px`
+                );
 
-                card.addEventListener("mousemove", handleMove, { passive: true });
-                card.addEventListener("mouseleave", handleLeave);
+                const hasMovement =
+                    Math.abs(targetX - pointerX) > 0.05 ||
+                    Math.abs(targetY - pointerY) > 0.05;
 
-                this.cleanupFns.push(() => {
-                    card.removeEventListener("mousemove", handleMove);
-                    card.removeEventListener("mouseleave", handleLeave);
-                    card.style.transform = "";
-                });
+                if (hasMovement) {
+                    this.animationFrame = window.requestAnimationFrame(
+                        updateParallax
+                    );
+                } else {
+                    this.animationFrame = null;
+                }
+            };
+
+            const requestUpdate = () => {
+                if (this.animationFrame) {
+                    return;
+                }
+
+                this.animationFrame = window.requestAnimationFrame(
+                    updateParallax
+                );
+            };
+
+            const handlePointerMove = (event) => {
+                const bounds = root.getBoundingClientRect();
+
+                const relativeX = (event.clientX - bounds.left) / bounds.width;
+                const relativeY = (event.clientY - bounds.top) / bounds.height;
+
+                const normalizedX = Math.max(-1, Math.min(1, relativeX * 2 - 1));
+                const normalizedY = Math.max(-1, Math.min(1, relativeY * 2 - 1));
+
+                /*
+                 * Kept intentionally subtle. CSS applies different movement
+                 * multipliers to the background and header layers.
+                 */
+                targetX = normalizedX * 18;
+                targetY = normalizedY * 14;
+
+                requestUpdate();
+            };
+
+            const handlePointerLeave = () => {
+                targetX = 0;
+                targetY = 0;
+                requestUpdate();
+            };
+
+            root.addEventListener("pointermove", handlePointerMove, {
+                passive: true,
             });
-        }
+
+            root.addEventListener("pointerleave", handlePointerLeave, {
+                passive: true,
+            });
+
+            this.cleanupFns.push(() => {
+                root.removeEventListener("pointermove", handlePointerMove);
+                root.removeEventListener("pointerleave", handlePointerLeave);
+
+                root.style.setProperty("--edu-pointer-x", "0px");
+                root.style.setProperty("--edu-pointer-y", "0px");
+            });
+        },
     };
 
     window.SephirootEducation = EducationModule;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        EducationModule.init(document);
+    });
 })();

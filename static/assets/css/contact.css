@@ -1,0 +1,382 @@
+/* ==========================================================================
+   Sephiroot Contact Dashboard - Mythic Cyberpunk CSS
+   ========================================================================== */
+
+.sephi-contact-page {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Hero & Header */
+.contact-hero {
+    margin-bottom: 50px;
+    text-align: right;
+}
+
+.contact-hero__title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 15px 0;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+.contact-hero__title span {
+    color: #00e5ff;
+}
+
+.contact-hero__subtitle {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 750px;
+}
+
+/* Grid System */
+.contact-grid {
+    display: contents;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Comms Terminal Core */
+.comms-terminal {
+    position: relative;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 12px;
+    background: rgba(6, 10, 18, 0.94);
+    box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.8),
+            0 0 25px rgba(0, 229, 255, 0.08);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+}
+
+.comms-terminal--sender {
+    border-color: rgba(0, 255, 170, 0.2);
+}
+
+/* Background Scanline Overlay */
+.comms-terminal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.015) 0,
+            rgba(255, 255, 255, 0.015) 1px,
+            transparent 1px,
+            transparent 3px
+    );
+    z-index: 2;
+}
+
+/* Terminal Header */
+.comms-terminal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(12, 18, 30, 0.96);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+    direction: ltr;
+}
+
+.comms-terminal--sender .comms-terminal__header {
+    border-bottom-color: rgba(0, 255, 170, 0.15);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.terminal-dots .dot.red { background: #ff5f56; box-shadow: 0 0 6px #ff5f56; }
+.terminal-dots .dot.yellow { background: #ffbd2e; box-shadow: 0 0 6px #ffbd2e; }
+.terminal-dots .dot.green { background: #27c93f; box-shadow: 0 0 6px #27c93f; }
+
+.comms-terminal__path {
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.78rem;
+    color: #88a0c0;
+}
+
+.comms-terminal__status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.72rem;
+    color: #00ffaa;
+}
+
+.comms-terminal--sender .comms-terminal__status {
+    color: #00ffaa;
+}
+
+.status-indicator.online {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ffaa;
+    box-shadow: 0 0 10px #00ffaa;
+}
+
+/* Terminal Body */
+.comms-terminal__body {
+    padding: 24px 28px;
+    text-align: right;
+}
+
+.terminal-sys-log {
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.78rem;
+    color: rgba(200, 220, 240, 0.6);
+    direction: ltr;
+    text-align: left;
+}
+
+.log-line {
+    margin: 5px 0;
+}
+
+.log-prefix {
+    color: #00e5ff;
+    font-weight: bold;
+}
+
+.text-green { color: #00ffaa !important; }
+.text-cyan { color: #00e5ff !important; }
+.text-gold { color: #ffcc00 !important; }
+
+.terminal-divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.3), transparent);
+    margin: 18px 0;
+}
+
+/* Prompt Line */
+.terminal-prompt-line {
+    display: flex;
+    gap: 10px;
+    direction: ltr;
+    text-align: left;
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.prompt-symbol {
+    color: #00ffaa;
+}
+
+/* Node Information Cards */
+.terminal-node-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.terminal-node-card:hover {
+    border-color: rgba(0, 229, 255, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 229, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.node-badge {
+    display: inline-block;
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    background: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.node-badge--sec {
+    background: rgba(0, 255, 170, 0.1);
+    color: #00ffaa;
+}
+
+.node-title {
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0 0 10px;
+}
+
+.node-link {
+    font-family: var(--sephi-mono, monospace);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.node-meta {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Cyber Form design */
+.cyber-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cyber-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cyber-form__label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.cyber-form__input {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(0, 255, 170, 0.2);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 0.92rem;
+    transition: all 0.25s ease;
+    text-align: right;
+}
+
+.cyber-form__input:focus {
+    outline: none;
+    border-color: #00ffaa;
+    box-shadow: 0 0 10px rgba(0, 255, 170, 0.15);
+}
+
+.cyber-form__input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.85rem;
+}
+
+.cyber-form__input--textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Scanline Submit Button */
+.cyber-submit-btn {
+    position: relative;
+    background: rgba(0, 255, 170, 0.1);
+    border: 1px solid #00ffaa;
+    color: #00ffaa;
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cyber-submit-btn:hover {
+    background: #00ffaa;
+    color: #060a12;
+    box-shadow: 0 0 20px rgba(0, 255, 170, 0.4);
+}
+
+/* Feedback Console */
+.form-feedback-console {
+    margin-top: 15px;
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.8rem;
+    min-height: 24px;
+}
+
+
+.form-feedback-console.is-success {
+  color: #00ffaa;
+}
+
+.form-feedback-console.is-error {
+  color: #ff5f56;
+}
+
+.form-feedback-console.is-pending {
+  color: #ffcc00;
+}
+
+
+/* Terminal Footer */
+.comms-terminal__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(8, 12, 20, 0.98);
+    border-top: 1px solid rgba(0, 229, 255, 0.15);
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.74rem;
+    direction: ltr;
+}
+
+.comms-terminal--sender .comms-terminal__footer {
+    border-top-color: rgba(0, 255, 170, 0.15);
+}
+
+.hud-stat {
+    display: flex;
+    gap: 6px;
+}
+
+.hud-label { color: #64748b; }
+.hud-value { font-weight: 700; color: #fff; }
+
+/* Kicker Section styling */
+.section-kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.section-kicker__line {
+    width: 40px;
+    height: 2px;
+    background: #00e5ff;
+}
+
+.section-kicker__text {
+    font-family: var(--sephi-mono, monospace);
+    font-size: 0.75rem;
+    color: #00e5ff;
+    letter-spacing: 0.15em;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  white-space: nowrap !important;
+}

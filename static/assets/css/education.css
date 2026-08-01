@@ -1,535 +1,974 @@
-/* =========================================
-   SEPHIROOT EDUCATION PAGE
-   Root: .sephi-education-page
-========================================= */
+/* ==========================================================================
+   Sephiroot Education
+   Cybersecurity / Mythic Interface
+   ========================================================================== */
 
 .sephi-education-page {
-    --edu-bg: #060816;
-    --edu-bg-2: #0b1020;
-    --edu-panel: rgba(11, 17, 34, 0.78);
-    --edu-panel-strong: rgba(12, 19, 40, 0.9);
-    --edu-border: rgba(116, 255, 203, 0.12);
-    --edu-border-soft: rgba(88, 216, 255, 0.1);
+    --edu-bg: #05070b;
+    --edu-surface: rgba(12, 18, 24, 0.88);
+    --edu-surface-strong: rgba(15, 23, 30, 0.96);
+    --edu-surface-soft: rgba(255, 255, 255, 0.025);
 
-    --edu-text: #edf6ff;
-    --edu-text-soft: rgba(237, 246, 255, 0.78);
-    --edu-text-dim: rgba(237, 246, 255, 0.52);
+    --edu-green: #45f3a5;
+    --edu-cyan: #36dbe8;
+    --edu-violet: #a986ff;
+    --edu-amber: #ffc857;
+    --edu-red: #ff6577;
 
-    --edu-green: #74ffcb;
-    --edu-cyan: #58d8ff;
-    --edu-blue: #5b8cff;
-    --edu-purple: #a56dff;
-    --edu-amber: #ffb84d;
+    --edu-text: #eef7f5;
+    --edu-text-soft: #a7bab6;
+    --edu-text-muted: #718681;
+
+    --edu-border: rgba(130, 189, 175, 0.17);
+    --edu-border-strong: rgba(69, 243, 165, 0.42);
+
+    --edu-shadow:
+            0 26px 70px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+    --edu-pointer-x: 0px;
+    --edu-pointer-y: 0px;
+    --edu-depth-x: 0deg;
+    --edu-depth-y: 0deg;
 
     position: relative;
-    overflow: hidden;
-    border-radius: 28px;
-    background:
-            radial-gradient(circle at 12% 16%, rgba(116,255,203,0.08), transparent 28%),
-            radial-gradient(circle at 88% 8%, rgba(88,216,255,0.08), transparent 28%),
-            radial-gradient(circle at 50% 88%, rgba(165,109,255,0.08), transparent 30%),
-            linear-gradient(180deg, var(--edu-bg-2) 0%, var(--edu-bg) 100%);
-    color: var(--edu-text);
     isolation: isolate;
+    width: 100%;
+    min-height: 100vh;
+    padding: clamp(28px, 5vw, 72px);
+    overflow: hidden;
+
+    color: var(--edu-text);
+    direction: rtl;
+
+    background-color: var(--edu-bg);
+    background-image:
+            linear-gradient(rgba(69, 243, 165, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(54, 219, 232, 0.025) 1px, transparent 1px),
+            radial-gradient(
+                    circle at 85% 8%,
+                    rgba(69, 243, 165, 0.12),
+                    transparent 32%
+            ),
+            radial-gradient(
+                    circle at 10% 48%,
+                    rgba(169, 134, 255, 0.09),
+                    transparent 31%
+            ),
+            radial-gradient(
+                    circle at 78% 94%,
+                    rgba(255, 200, 87, 0.06),
+                    transparent 28%
+            );
+
+    background-size:
+            52px 52px,
+            52px 52px,
+            auto,
+            auto,
+            auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.045);
+    border-radius: 8px;
+    box-shadow: var(--edu-shadow);
+
+    transform-style: preserve-3d;
 }
 
-/* ===== atmospheric layers ===== */
+/* Ambient scan layer */
+.sephi-education-page::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    z-index: -2;
+    pointer-events: none;
 
-.sephi-education-page::before,
+    background:
+            repeating-linear-gradient(
+                    0deg,
+                    transparent 0,
+                    transparent 5px,
+                    rgba(255, 255, 255, 0.012) 6px
+            );
+
+    opacity: 0.65;
+    transform:
+            translate3d(
+                    calc(var(--edu-pointer-x) * -0.18),
+                    calc(var(--edu-pointer-y) * -0.18),
+                    0
+            );
+    will-change: transform;
+}
+
+/* Moving atmospheric light */
 .sephi-education-page::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: -220px;
+    left: -180px;
+    z-index: -1;
+
+    width: min(640px, 75vw);
+    aspect-ratio: 1;
     pointer-events: none;
+
+    background:
+            radial-gradient(
+                    circle,
+                    rgba(54, 219, 232, 0.12) 0,
+                    rgba(169, 134, 255, 0.07) 38%,
+                    transparent 70%
+            );
+
+    filter: blur(18px);
+    opacity: 0.8;
+
+    transform:
+            translate3d(
+                    calc(var(--edu-pointer-x) * 0.45),
+                    calc(var(--edu-pointer-y) * 0.45),
+                    0
+            );
+
+    will-change: transform;
 }
 
-.sephi-education-page::before {
-    z-index: 0;
-    opacity: 0.05;
-    mix-blend-mode: soft-light;
-    background-image:
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.sephi-education-page::after {
-    z-index: 0;
-    background-image:
-            linear-gradient(rgba(116,255,203,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(116,255,203,0.04) 1px, transparent 1px);
-    background-size: 42px 42px;
-    mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
-}
-
-.sephi-education-page .top-right-bg {
-    opacity: 0.25;
-    filter: blur(6px);
-}
-
-/* content layering */
-.sephi-education-page > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* ===== top section ===== */
+/* ==========================================================================
+   Header
+   ========================================================================== */
 
 .sephi-education-page .cm-content-item__top {
     position: relative;
-    padding: 24px 0 18px;
+    z-index: 2;
+    min-height: clamp(280px, 36vw, 460px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: clamp(30px, 6vw, 84px);
+    overflow: hidden;
+
+    border-bottom: 1px solid var(--edu-border);
+
+    transform:
+            translate3d(
+                    calc(var(--edu-pointer-x) * 0.1),
+                    calc(var(--edu-pointer-y) * 0.1),
+                    0
+            );
+
+    will-change: transform;
+}
+
+.sephi-education-page .cm-content-item__top::before {
+    content: "SEPHIROOT // EDUCATION PROTOCOL";
+    position: absolute;
+    top: 22px;
+    left: 24px;
+
+    color: rgba(167, 186, 182, 0.52);
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0;
+    direction: ltr;
+}
+
+.sephi-education-page .cm-content-item__top::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(580px, 78%);
+    height: 2px;
+
+    background: linear-gradient(
+            90deg,
+            transparent,
+            var(--edu-green),
+            var(--edu-cyan),
+            transparent
+    );
+
+    box-shadow: 0 0 20px rgba(69, 243, 165, 0.45);
+}
+
+.sephi-education-page .top-right-bg {
+    position: absolute;
+    top: -140px;
+    right: -120px;
+    width: clamp(300px, 50vw, 680px);
+    aspect-ratio: 1;
+    pointer-events: none;
+
+    border: 1px solid rgba(69, 243, 165, 0.12);
+    border-radius: 50%;
+
+    background:
+            repeating-radial-gradient(
+                    circle,
+                    transparent 0 32px,
+                    rgba(69, 243, 165, 0.04) 33px 34px
+            );
+
+    opacity: 0.72;
+
+    transform:
+            translate3d(
+                    calc(var(--edu-pointer-x) * 0.35),
+                    calc(var(--edu-pointer-y) * 0.35),
+                    0
+            )
+            rotate(16deg);
+
+    will-change: transform;
 }
 
 .sephi-education-page .cm-content-sub {
+    position: relative;
+    z-index: 2;
+
     display: inline-flex;
     align-items: center;
-    gap: 14px;
-    padding: 10px 16px;
-    border-radius: 999px;
-    background: rgba(10, 16, 33, 0.7);
-    border: 1px solid rgba(116,255,203,0.14);
-    box-shadow: 0 0 22px rgba(116,255,203,0.06);
+    gap: 12px;
+
+    margin-bottom: 22px;
+    padding: 7px 12px;
+
+    color: var(--edu-green);
+    background: rgba(69, 243, 165, 0.055);
+    border: 1px solid rgba(69, 243, 165, 0.28);
+    border-radius: 4px;
+}
+
+.sephi-education-page .cm-content-sub .icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+
+    background: rgba(69, 243, 165, 0.1);
+    border: 1px solid rgba(69, 243, 165, 0.25);
+    border-radius: 4px;
+}
+
+.sephi-education-page .cm-content-sub .icon img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
 }
 
 .sephi-education-page .cm-content-sub p {
     margin: 0;
-    color: var(--edu-green);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-size: 0.78rem;
-}
-
-.sephi-education-page .cm-content-sub .icon {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
+    color: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
 }
 
 .sephi-education-page .main-title {
-    margin-top: 24px;
-    color: #f6fbff;
-    font-size: clamp(2.2rem, 5vw, 4.6rem);
-    line-height: 1.14;
-    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+    margin: 0;
+
+    color: var(--edu-text);
+    font-size: clamp(38px, 6vw, 82px);
+    font-weight: 900;
+    line-height: 1.22;
+    letter-spacing: 0;
 }
 
 .sephi-education-page .main-title span {
-    background: linear-gradient(90deg, var(--edu-green), var(--edu-cyan), var(--edu-purple));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    display: inline-block;
+    color: var(--edu-green);
+    text-shadow:
+            0 0 24px rgba(69, 243, 165, 0.22),
+            0 0 60px rgba(54, 219, 232, 0.08);
 }
 
-/* ===== page body wrapper ===== */
+.sephi-education-page .main-title u {
+    position: absolute;
+    right: 4%;
+    bottom: -26px;
+    display: block;
+    width: min(360px, 54%);
+    text-decoration: none;
+}
 
-.cm-education-education {
+.sephi-education-page .main-title u img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0.82;
+}
+
+/* ==========================================================================
+   Main Sections
+   ========================================================================== */
+
+.sephi-education-page .cm-education-education {
+    position: relative;
+    z-index: 2;
+
     display: grid;
-    gap: 26px;
-    margin-top: 30px;
-}
+    gap: clamp(28px, 4vw, 52px);
 
-/* ===== common block ===== */
+    padding-block: clamp(42px, 6vw, 86px);
+}
 
 .sephi-education-page .single-info-item {
+    --section-accent: var(--edu-green);
+
     position: relative;
-    padding: 28px 26px;
-    border-radius: 24px;
-    background:
-            linear-gradient(180deg, rgba(15, 22, 44, 0.88), rgba(7, 12, 25, 0.82));
-    border: 1px solid rgba(255,255,255,0.05);
-    box-shadow:
-            0 18px 50px rgba(0, 0, 0, 0.24),
-            inset 0 1px 0 rgba(255,255,255,0.04);
+    padding: clamp(24px, 4vw, 48px);
     overflow: hidden;
-    transform: translateZ(0);
+
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.035),
+                    transparent 44%
+            ),
+            var(--edu-surface);
+
+    border: 1px solid var(--edu-border);
+    border-radius: 8px;
+    box-shadow: var(--edu-shadow);
+
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+.sephi-education-page .single-info-item:nth-child(2) {
+    --section-accent: var(--edu-cyan);
+}
+
+.sephi-education-page .single-info-item:nth-child(3) {
+    --section-accent: var(--edu-violet);
+}
+
+.sephi-education-page .single-info-item:nth-child(4) {
+    --section-accent: var(--edu-amber);
 }
 
 .sephi-education-page .single-info-item::before {
     content: "";
     position: absolute;
-    inset: 0 auto auto 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(116,255,203,0.55), transparent);
-    opacity: 0.85;
+    top: 0;
+    right: 0;
+
+    width: 90px;
+    height: 3px;
+
+    background: var(--section-accent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--section-accent) 55%, transparent);
 }
 
-.sephi-education-page .single-info-item h3 {
-    margin: 0 0 26px;
-    font-size: 1.35rem;
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.sephi-education-page .single-info-item h3::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--edu-green);
-    box-shadow: 0 0 14px var(--edu-green);
-    flex: 0 0 auto;
-}
-
-/* ===== timeline ===== */
-
-.cm-education-timeline-content {
-    position: relative;
-    display: grid;
-    gap: 20px;
-}
-
-.cm-education-timeline-content::before {
+.sephi-education-page .single-info-item::after {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: calc(34% - 1px);
-    width: 2px;
+    top: 16px;
+    left: 18px;
+
+    width: 8px;
+    height: 8px;
+
+    background: var(--section-accent);
+    border-radius: 50%;
+    box-shadow:
+            16px 0 0 rgba(255, 255, 255, 0.13),
+            32px 0 0 rgba(255, 255, 255, 0.07),
+            0 0 14px var(--section-accent);
+}
+
+.sephi-education-page .single-info-item > h3,
+.sephi-education-page .cm-row > h3 {
+    position: relative;
+    margin: 0 0 clamp(28px, 4vw, 44px);
+    padding-right: 18px;
+
+    color: var(--edu-text);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 850;
+    line-height: 1.4;
+    letter-spacing: 0;
+}
+
+.sephi-education-page .single-info-item > h3::before,
+.sephi-education-page .cm-row > h3::before {
+    content: "";
+    position: absolute;
+    top: 9%;
+    right: 0;
+
+    width: 4px;
+    height: 82%;
+
+    background: var(--section-accent);
+    box-shadow: 0 0 15px var(--section-accent);
+}
+
+/* ==========================================================================
+   Timeline
+   ========================================================================== */
+
+.sephi-education-page .cm-education-timeline-content {
+    position: relative;
+    display: grid;
+    gap: 0;
+}
+
+.sephi-education-page .cm-education-timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    right: clamp(185px, 28%, 310px);
+
+    width: 1px;
+
     background: linear-gradient(
             180deg,
-            rgba(116,255,203,0.05),
-            rgba(116,255,203,0.85),
-            rgba(88,216,255,0.6),
-            rgba(116,255,203,0.05)
+            transparent,
+            var(--section-accent) 12%,
+            rgba(255, 255, 255, 0.12) 88%,
+            transparent
     );
-    box-shadow: 0 0 18px rgba(116,255,203,0.2);
+
+    box-shadow: 0 0 12px color-mix(in srgb, var(--section-accent) 40%, transparent);
 }
 
-.education-timeline {
+.sephi-education-page .education-timeline {
     position: relative;
     display: grid;
-    grid-template-columns: 30% 1fr;
-    gap: 28px;
-    align-items: start;
-    padding: 24px 22px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1fr);
+    gap: clamp(30px, 5vw, 68px);
+
+    padding: 26px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+
+    transform-style: preserve-3d;
+    transition:
+            background-color 260ms ease,
+            border-color 260ms ease,
+            opacity 700ms ease,
+            transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.education-timeline::before {
+.sephi-education-page .education-timeline:last-child {
+    border-bottom: 0;
+}
+
+.sephi-education-page .education-timeline::before {
     content: "";
     position: absolute;
-    top: 28px;
-    right: calc(34% - 7px);
-    width: 14px;
-    height: 14px;
+    top: 34px;
+    right: clamp(176px, calc(28% - 8px), 302px);
+
+    width: 15px;
+    height: 15px;
+
+    background: var(--edu-bg);
+    border: 2px solid var(--section-accent);
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--edu-green), var(--edu-cyan));
+
     box-shadow:
-            0 0 0 6px rgba(116,255,203,0.08),
-            0 0 16px rgba(116,255,203,0.35);
+            0 0 0 5px color-mix(in srgb, var(--section-accent) 8%, transparent),
+            0 0 20px color-mix(in srgb, var(--section-accent) 55%, transparent);
 }
 
-.education-timeline:hover {
-    transform: translateY(-4px);
-    border-color: rgba(116,255,203,0.16);
-    box-shadow:
-            0 14px 40px rgba(0,0,0,0.2),
-            0 0 28px rgba(116,255,203,0.06);
+.sephi-education-page .education-timeline:hover {
+    background-color: rgba(255, 255, 255, 0.018);
+    border-color: color-mix(in srgb, var(--section-accent) 30%, transparent);
 }
 
-.education-timeline .left-side {
+.sephi-education-page .left-side,
+.sephi-education-page .right-side {
     position: relative;
-    padding-inline-end: 18px;
+    z-index: 1;
+    min-width: 0;
 }
 
-.education-timeline .uni-name {
-    margin: 0 0 10px;
-    font-size: 1rem;
-    color: var(--edu-green);
-    line-height: 1.8;
+.sephi-education-page .left-side {
+    padding-left: 18px;
 }
 
-.education-timeline .left-side p {
+.sephi-education-page .right-side {
+    padding-right: 18px;
+}
+
+.sephi-education-page .uni-name,
+.sephi-education-page .degree {
+    margin: 0 0 9px;
+    overflow-wrap: anywhere;
+
+    color: var(--edu-text);
+    font-size: clamp(14px, 1.5vw, 17px);
+    font-weight: 750;
+    line-height: 1.75;
+    letter-spacing: 0;
+}
+
+.sephi-education-page .degree {
+    color: var(--section-accent);
+    direction: ltr;
+    text-align: right;
+}
+
+.sephi-education-page .left-side p {
+    display: inline-flex;
     margin: 0;
-    color: var(--edu-text-dim);
-    font-size: 0.95rem;
+    padding: 4px 8px;
+
+    color: var(--edu-text-muted);
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+
+    font-family: monospace;
+    font-size: 11px;
+    direction: ltr;
 }
 
-.education-timeline .degree {
-    margin: 0 0 12px;
-    color: #ffffff;
-    font-size: 1.08rem;
-    line-height: 1.9;
-}
-
-.education-timeline .right-side p {
+.sephi-education-page .right-side p {
+    max-width: 760px;
     margin: 0;
+
     color: var(--edu-text-soft);
+    font-size: 14px;
     line-height: 2;
-    font-size: 0.98rem;
 }
 
-/* ===== skills ===== */
+/* ==========================================================================
+   Skills
+   ========================================================================== */
 
 .sephi-education-page .cm-row {
-    display: grid;
-    gap: 18px;
+    width: 100%;
 }
 
-.cm-skill-container {
+.sephi-education-page .cm-skill-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: clamp(30px, 6vw, 72px);
 }
 
-.single-skill-item {
+.sephi-education-page .single-skill-item {
     display: grid;
-    gap: 18px;
+    align-content: start;
+    gap: 26px;
+    min-width: 0;
 }
 
-.expertise__single {
-    padding: 18px 18px 16px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.05);
+.sephi-education-page .expertise__single {
+    position: relative;
 }
 
-.expertise__title {
+.sephi-education-page .expertise__title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 16px;
-    margin: 0 0 14px;
-    color: #f3fbff;
-    font-size: 0.98rem;
-    line-height: 1.8;
+
+    margin: 0 0 11px;
+    color: var(--edu-text-soft);
+
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    direction: ltr;
 }
 
-.expertise__title span {
-    color: var(--edu-cyan);
-    font-weight: 700;
-    white-space: nowrap;
+.sephi-education-page .expertise__title span {
+    flex: 0 0 auto;
+    color: var(--section-accent);
+    font-weight: 800;
 }
 
-.progress {
+.sephi-education-page .progress {
     position: relative;
-    height: 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.05);
+    width: 100%;
+    height: 9px;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.04);
+
+    background:
+            repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.045) 0 16px,
+                    rgba(255, 255, 255, 0.015) 16px 20px
+            );
+
+    border: 1px solid rgba(255, 255, 255, 0.085);
+    border-radius: 2px;
 }
 
-.progress-bar {
+.sephi-education-page .progress-bar {
     position: relative;
     height: 100%;
-    width: 0;
-    border-radius: inherit;
-    background: linear-gradient(90deg, var(--edu-green), var(--edu-cyan), var(--edu-blue));
+
+    background: linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--section-accent) 68%, #ffffff),
+            var(--section-accent)
+    );
+
+    border-radius: 1px;
     box-shadow:
-            0 0 20px rgba(88,216,255,0.28),
-            inset 0 0 10px rgba(255,255,255,0.18);
-    transition: width 1.4s cubic-bezier(.22,1,.36,1);
+            0 0 12px color-mix(in srgb, var(--section-accent) 50%, transparent),
+            0 0 28px color-mix(in srgb, var(--section-accent) 20%, transparent);
+
+    transition: width 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: width;
 }
 
-.progress-bar::after {
+.sephi-education-page .progress-bar::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-            120deg,
-            transparent 0%,
-            rgba(255,255,255,0.22) 30%,
-            transparent 60%
-    );
-    animation: eduBarShine 2.8s linear infinite;
+    top: -3px;
+    left: 0;
+
+    width: 2px;
+    height: 13px;
+
+    background: #ffffff;
+    box-shadow:
+            0 0 8px #ffffff,
+            0 0 14px var(--section-accent);
 }
 
-@keyframes eduBarShine {
-    from { transform: translateX(-120%); }
-    to { transform: translateX(140%); }
-}
+/* ==========================================================================
+   Languages
+   ========================================================================== */
 
-/* ===== language cards ===== */
-
-.language-status-grid {
+.sephi-education-page .language-status-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
 }
 
-.language-card {
+.sephi-education-page .language-card {
     position: relative;
-    padding: 22px 20px;
-    border-radius: 22px;
+    padding: clamp(20px, 3vw, 30px);
+
     background:
-            linear-gradient(180deg, rgba(13, 21, 43, 0.9), rgba(7, 12, 26, 0.84));
-    border: 1px solid rgba(88,216,255,0.1);
-    overflow: hidden;
-    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+            linear-gradient(
+                    135deg,
+                    color-mix(in srgb, var(--section-accent) 5%, transparent),
+                    transparent 52%
+            ),
+            var(--edu-surface-soft);
+
+    border: 1px solid rgba(255, 255, 255, 0.085);
+    border-radius: 6px;
+
+    transform-style: preserve-3d;
+    transition:
+            border-color 260ms ease,
+            background-color 260ms ease,
+            box-shadow 260ms ease,
+            opacity 700ms ease,
+            transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.language-card::before {
-    content: "";
-    position: absolute;
-    top: -60px;
-    left: -60px;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(88,216,255,0.18), transparent 70%);
-    filter: blur(18px);
+.sephi-education-page .language-card:hover {
+    border-color: color-mix(in srgb, var(--section-accent) 48%, transparent);
+    box-shadow:
+            inset 0 0 30px color-mix(in srgb, var(--section-accent) 4%, transparent),
+            0 14px 38px rgba(0, 0, 0, 0.24);
 }
 
-.language-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(88,216,255,0.2);
-    box-shadow: 0 16px 38px rgba(0,0,0,0.22);
-}
-
-.language-card__top {
+.sephi-education-page .language-card__top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 18px;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 22px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+    direction: ltr;
 }
 
-.lang-name {
-    color: #fff;
-    font-size: 1.14rem;
+.sephi-education-page .lang-name {
+    min-width: 0;
+    color: var(--edu-text);
+    font-family: monospace;
+    font-size: clamp(17px, 2vw, 22px);
     font-weight: 800;
-    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
 }
 
-.lang-badge {
-    padding: 7px 12px;
-    border-radius: 999px;
-    background: rgba(116,255,203,0.08);
-    border: 1px solid rgba(116,255,203,0.18);
-    color: var(--edu-green);
-    font-size: 0.78rem;
+.sephi-education-page .lang-badge {
+    flex: 0 0 auto;
+    padding: 5px 9px;
+
+    color: var(--section-accent);
+    background: color-mix(in srgb, var(--section-accent) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--section-accent) 27%, transparent);
+    border-radius: 3px;
+
+    font-family: monospace;
+    font-size: 10px;
     font-weight: 700;
 }
 
-.lang-status-row {
+.sephi-education-page .lang-status-row {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
+    align-items: center;
+    gap: 18px;
 
-.lang-status-row:last-child {
-    border-bottom: 0;
-}
-
-.lang-status-row span {
+    min-height: 38px;
     color: var(--edu-text-soft);
-    font-size: 0.95rem;
+    direction: ltr;
+
+    font-family: monospace;
+    font-size: 12px;
 }
 
-.lang-dots {
-    display: inline-flex;
-    gap: 8px;
+.sephi-education-page .lang-dots {
+    display: grid;
+    grid-template-columns: repeat(5, 9px);
+    gap: 6px;
+    flex: 0 0 auto;
 }
 
-.lang-dots i {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
+.sephi-education-page .lang-dots i {
     display: block;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    width: 9px;
+    height: 9px;
+
+    background: rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 2px;
 }
 
-.lang-dots i.active {
-    background: linear-gradient(135deg, var(--edu-green), var(--edu-cyan));
-    box-shadow: 0 0 12px rgba(88,216,255,0.4);
+.sephi-education-page .lang-dots i.active {
+    background: var(--section-accent);
+    border-color: var(--section-accent);
+    box-shadow:
+            0 0 8px color-mix(in srgb, var(--section-accent) 65%, transparent),
+            0 0 16px color-mix(in srgb, var(--section-accent) 25%, transparent);
 }
 
-.language-card:hover .lang-dots i.active {
-    transform: scale(1.15);
-}
+/* ==========================================================================
+   Reveal animations
+   ========================================================================== */
 
-/* ===== reveal ===== */
-
-.sephi-education-page .single-info-item,
-.education-timeline,
-.language-card,
-.expertise__single {
+.sephi-education-page .reveal-block,
+.sephi-education-page .reveal-item,
+.sephi-education-page .expertise__single {
     opacity: 0;
-    transform: translateY(26px);
+    transform: translate3d(0, 34px, 0);
+}
+
+.sephi-education-page .reveal-block.is-visible,
+.sephi-education-page .reveal-item.is-visible,
+.sephi-education-page .expertise__single.is-visible,
+.sephi-education-page .single-info-item.is-visible,
+.sephi-education-page .education-timeline.is-visible,
+.sephi-education-page .language-card.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.sephi-education-page .reveal-block {
     transition:
-            opacity 0.8s ease,
-            transform 0.8s cubic-bezier(.22,1,.36,1);
-    will-change: transform, opacity;
+            opacity 760ms ease,
+            transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.sephi-education-page .is-visible {
-    opacity: 1 !important;
-    transform: none !important;
+.sephi-education-page .reveal-item,
+.sephi-education-page .expertise__single {
+    transition:
+            opacity 650ms ease,
+            transform 780ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ===== responsive ===== */
+.sephi-education-page .education-timeline:nth-child(2),
+.sephi-education-page .expertise__single:nth-child(2) {
+    transition-delay: 80ms;
+}
 
-@media (max-width: 1100px) {
-    .cm-education-timeline-content::before {
-        right: 22px;
+.sephi-education-page .education-timeline:nth-child(3),
+.sephi-education-page .expertise__single:nth-child(3) {
+    transition-delay: 140ms;
+}
+
+.sephi-education-page .education-timeline:nth-child(4) {
+    transition-delay: 200ms;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+    .sephi-education-page .single-info-item:hover {
+        border-color:
+                color-mix(in srgb, var(--section-accent) 38%, var(--edu-border));
     }
 
-    .education-timeline {
-        grid-template-columns: 1fr;
-        gap: 14px;
-        padding-right: 54px;
-    }
-
-    .education-timeline::before {
-        right: 16px;
-    }
-
-    .cm-skill-container,
-    .language-status-grid {
-        grid-template-columns: 1fr;
+    .sephi-education-page .education-timeline:hover .degree,
+    .sephi-education-page .language-card:hover .lang-name {
+        text-shadow:
+                0 0 16px
+                color-mix(in srgb, var(--section-accent) 28%, transparent);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .sephi-education-page {
-        border-radius: 22px;
+        --edu-pointer-x: 0px;
+        --edu-pointer-y: 0px;
+        --edu-depth-x: 0deg;
+        --edu-depth-y: 0deg;
+
+        padding: clamp(20px, 4vw, 38px);
     }
 
-    .sephi-education-page .single-info-item {
-        padding: 22px 18px;
-        border-radius: 20px;
+    .sephi-education-page .cm-education-timeline-content::before {
+        right: 9px;
+    }
+
+    .sephi-education-page .education-timeline {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 24px 34px 24px 6px;
+    }
+
+    .sephi-education-page .education-timeline::before {
+        top: 31px;
+        right: 2px;
+    }
+
+    .sephi-education-page .left-side,
+    .sephi-education-page .right-side {
+        padding: 0;
+    }
+
+    .sephi-education-page .cm-skill-container {
+        gap: 42px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sephi-education-page {
+        padding: 16px;
+        border-radius: 6px;
+        background-size:
+                38px 38px,
+                38px 38px,
+                auto,
+                auto,
+                auto;
+    }
+
+    .sephi-education-page .cm-content-item__top {
+        min-height: 300px;
+        padding: 56px 20px 44px;
+    }
+
+    .sephi-education-page .cm-content-item__top::before {
+        top: 16px;
+        left: 16px;
+        max-width: calc(100% - 32px);
+        font-size: 8px;
     }
 
     .sephi-education-page .main-title {
-        line-height: 1.22;
+        font-size: clamp(34px, 11vw, 52px);
     }
 
-    .education-timeline .right-side p,
-    .education-timeline .degree,
-    .education-timeline .uni-name {
-        line-height: 1.9;
+    .sephi-education-page .main-title u {
+        right: 0;
+        bottom: -18px;
+        width: 62%;
     }
 
-    .language-card__top,
-    .expertise__title {
-        flex-direction: column;
-        align-items: flex-start;
+    .sephi-education-page .single-info-item {
+        padding: 24px 18px;
+    }
+
+    .sephi-education-page .cm-skill-container,
+    .sephi-education-page .language-status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sephi-education-page .language-card {
+        padding: 20px 16px;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .progress-bar,
-    .education-timeline,
-    .language-card,
-    .sephi-education-page .single-info-item,
-    .expertise__single {
-        transition: none !important;
+@media (max-width: 430px) {
+    .sephi-education-page {
+        padding: 10px;
     }
 
-    .progress-bar::after {
+    .sephi-education-page .cm-content-item__top {
+        padding-inline: 15px;
+    }
+
+    .sephi-education-page .single-info-item {
+        padding-inline: 14px;
+    }
+
+    .sephi-education-page .education-timeline {
+        padding-right: 28px;
+    }
+
+    .sephi-education-page .language-card__top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .sephi-education-page .lang-status-row {
+        gap: 10px;
+    }
+
+    .sephi-education-page .lang-dots {
+        grid-template-columns: repeat(5, 8px);
+        gap: 4px;
+    }
+
+    .sephi-education-page .lang-dots i {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .sephi-education-page,
+    .sephi-education-page *,
+    .sephi-education-page *::before,
+    .sephi-education-page *::after {
+        scroll-behavior: auto !important;
         animation: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+
+    .sephi-education-page::before,
+    .sephi-education-page::after,
+    .sephi-education-page .top-right-bg,
+    .sephi-education-page .cm-content-item__top {
+        transform: none !important;
+    }
+
+    .sephi-education-page .reveal-block,
+    .sephi-education-page .reveal-item,
+    .sephi-education-page .expertise__single,
+    .sephi-education-page .single-info-item,
+    .sephi-education-page .education-timeline,
+    .sephi-education-page .language-card {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
