@@ -1,0 +1,284 @@
+/* ==========================================================================
+   Pricing Hero - Cyber Terminal / PC Workstation Style
+   ========================================================================== */
+
+.pricing-hero-terminal {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.terminal-window {
+  position: relative;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 16px;
+  background: rgba(6, 10, 18, 0.94);
+  box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.7),
+          0 0 35px rgba(0, 229, 255, 0.1),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.terminal-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.015) 0,
+          rgba(255, 255, 255, 0.015) 1px,
+          transparent 1px,
+          transparent 3px
+  );
+  z-index: 2;
+}
+
+/* Header Bar */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(12, 18, 30, 0.95);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+  direction: ltr;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-dots .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.terminal-dots .dot.red { background: #ff5f56; box-shadow: 0 0 8px rgba(255, 95, 86, 0.6); }
+.terminal-dots .dot.yellow { background: #ffbd2e; box-shadow: 0 0 8px rgba(255, 189, 46, 0.6); }
+.terminal-dots .dot.green { background: #27c93f; box-shadow: 0 0 8px rgba(39, 201, 63, 0.6); }
+
+.terminal-title {
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.82rem;
+  color: #88a0c0;
+  letter-spacing: 0.05em;
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.72rem;
+  color: #00ffaa;
+}
+
+.status-indicator.online {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ffaa;
+  box-shadow: 0 0 10px #00ffaa;
+  animation: pulseGlow 1.8s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Body */
+.terminal-body {
+  padding: 28px 32px;
+  text-align: right;
+  direction: rtl;
+}
+
+.terminal-sys-log {
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.8rem;
+  color: rgba(200, 220, 240, 0.65);
+  direction: ltr;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.log-line {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.log-prefix {
+  color: #00e5ff;
+  font-weight: 700;
+}
+
+.text-green { color: #00ffaa !important; }
+.text-cyan { color: #00e5ff !important; }
+.text-gold { color: #ffcc00 !important; }
+
+.terminal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 229, 255, 0.3), rgba(0, 255, 170, 0.1), transparent);
+  margin: 18px 0 24px;
+}
+
+/* Terminal Prompt & Dynamic Output */
+.terminal-prompt-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: ltr;
+  text-align: left;
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.prompt-symbol {
+  color: #00ffaa;
+  font-weight: 700;
+}
+
+.prompt-cmd {
+  color: #ffffff;
+}
+
+.cyber-kicker-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: #78efff;
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.pricing-hero-terminal .pricing-title {
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0 0 16px;
+  min-height: 2.5em;
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+.pricing-hero-terminal .pricing-subtitle {
+  font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+  color: rgba(220, 235, 250, 0.85);
+  line-height: 1.95;
+  margin: 0 0 28px;
+  min-height: 3.2em;
+}
+
+/* Typing Caret Effect */
+.term-typewriter::after,
+.term-typewriter-sub::after,
+.typewriter-cmd::after {
+  content: "█";
+  display: inline-block;
+  margin-inline-start: 6px;
+  color: #00e5ff;
+  animation: termCaret 0.8s steps(1) infinite;
+}
+
+.is-finished::after {
+  display: none !important;
+}
+
+@keyframes termCaret {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Command Buttons Switcher */
+.terminal-actions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.actions-label {
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 12px;
+}
+
+.command-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cmd-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: #a0aec0;
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cmd-btn .cmd-code {
+  color: #00e5ff;
+  font-weight: 700;
+}
+
+.cmd-btn:hover {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: rgba(0, 229, 255, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.cmd-btn.active {
+  background: rgba(0, 229, 255, 0.2);
+  border-color: #00e5ff;
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.3);
+}
+
+/* Footer HUD */
+.terminal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(8, 12, 20, 0.98);
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
+  direction: ltr;
+  font-family: var(--sephi-mono, monospace);
+  font-size: 0.74rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hud-stat {
+  display: flex;
+  gap: 6px;
+}
+
+.hud-label { color: #64748b; }
+.hud-value { font-weight: 700; }
+
+@media (max-width: 768px) {
+  .terminal-body { padding: 20px 18px; }
+  .pricing-hero-terminal .pricing-title { min-height: auto; }
+  .terminal-footer { justify-content: center; text-align: center; }
+}

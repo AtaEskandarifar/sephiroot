@@ -1,0 +1,577 @@
+/* ==========================================================================
+   SERVICES STYLESHEET (SEPHIROOT CYBERPUNK / MYTHIC CYBERSECURITY STYLE)
+   ========================================================================== */
+
+:root {
+    --svc-bg: #020205;
+    --svc-fg: #d1d5db;
+    --svc-primary: #00ff66;       /* هفائستوس - سبز هکری/کدنویسی */
+    --svc-cyan: #00f0ff;          /* پوزئیدون - آبی اقیانوسی/زیرساخت */
+    --svc-blue: #3b82f6;          /* آتنا - سرمه‌ای/دفاع سایبری */
+    --svc-purple: #a855f7;        /* آپولو - ارغوانی/هنری و وب */
+    --svc-card-bg: rgba(10, 10, 18, 0.7);
+    --svc-border: rgba(255, 255, 255, 0.08);
+    --svc-font: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* فاصله‌های محلی مطمئن */
+    --svc-spacing-sm: 1.5rem;
+    --svc-spacing-md: 3rem;
+    --svc-spacing-lg: 6rem;
+}
+
+.sephi-services-page {
+    position: relative;
+    background-color: var(--svc-bg);
+    color: var(--svc-fg);
+    font-family: var(--svc-font);
+    direction: rtl;
+    padding: var(--svc-spacing-lg) 2rem;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* افکت‌های پس‌زمینه بصری */
+.svc-noise {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    opacity: 0.02;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.svc-grid-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-size: 50px 50px;
+    background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    z-index: 2;
+}
+
+.svc-scanline {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.3)
+    );
+    background-size: 100% 4px;
+    z-index: 3;
+    opacity: 0.15;
+}
+
+/* شفق‌های قطبی (Aurora) */
+.svc-aurora {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 4;
+}
+.svc-aurora-1 {
+    top: -10%; left: 20%;
+    width: 600px; height: 600px;
+    background: var(--svc-primary);
+}
+.svc-aurora-2 {
+    top: 40%; right: -10%;
+    width: 500px; height: 500px;
+    background: var(--svc-cyan);
+}
+.svc-aurora-3 {
+    bottom: -10%; left: 10%;
+    width: 600px; height: 600px;
+    background: var(--svc-purple);
+}
+
+/* هیرو و عنوان اصلی */
+.svc-hero {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto var(--svc-spacing-lg) auto;
+    text-align: center;
+}
+
+.svc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--svc-border);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    letter-spacing: 2px;
+    color: var(--svc-primary);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+}
+
+.svc-badge-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--svc-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--svc-primary);
+    animation: pulse 1.5s infinite;
+}
+
+.svc-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+.svc-title span {
+    background: linear-gradient(90deg, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.svc-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #9ca3af;
+    margin-bottom: 2rem;
+}
+
+/* شبیه‌ساز ترمینال هیرو */
+.svc-typing-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 3rem;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+.svc-typing-label {
+    color: #4b5563;
+}
+.svc-typing-text {
+    color: var(--svc-cyan);
+    position: relative;
+}
+.svc-typing-text::after {
+    content: '_';
+    color: var(--svc-cyan);
+    animation: svc-blink 0.8s infinite;
+}
+
+/* تگ‌های تکنولوژی‌ها */
+.svc-stack-line {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.svc-stack-line span {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: #6b7280;
+    transition: all 0.3s ease;
+}
+.svc-stack-line span:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* استیکر آمار */
+.svc-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto var(--svc-spacing-lg) auto;
+    z-index: 10;
+    position: relative;
+}
+.svc-stat {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--svc-border);
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+.svc-stat strong {
+    display: block;
+    font-family: monospace;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+.svc-stat span {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* گرید کارت‌های خدمات */
+.svc-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto var(--svc-spacing-lg) auto;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 968px) {
+    .svc-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ساختار کارت‌های شبیه خدایان سایبرپانک */
+.svc-card {
+    background: var(--svc-card-bg);
+    border: 1px solid var(--svc-border);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.svc-card-orb {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    filter: blur(60px);
+    opacity: 0.1;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.svc-card-top {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+.svc-icon {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--svc-border);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.svc-card-kicker {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.svc-card h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.svc-card-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #9ca3af;
+    margin-bottom: 24px;
+}
+
+.svc-price-tag {
+    font-size: 0.8rem;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.02);
+    border-right: 2px solid;
+    padding: 8px 12px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 24px;
+}
+
+.svc-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.svc-feature-list li {
+    font-size: 0.9rem;
+    color: #d1d5db;
+    position: relative;
+    padding-right: 20px;
+}
+
+.svc-feature-list li::before {
+    content: "◇";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.8rem;
+}
+
+/* شبیه‌ساز ترمینال در انتهای کارت‌ها */
+.svc-terminal {
+    background: #05050a;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    overflow-x: auto;
+}
+.terminal-prompt {
+    color: #4b5563;
+    white-space: nowrap;
+}
+.terminal-command {
+    color: #e5e7eb;
+    white-space: nowrap;
+}
+
+/* استایل‌های تخصصی براساس خداهای اساطیری کارت‌ها */
+/* هفائستوس (سبز) */
+.svc-card-primary .svc-card-orb { background: var(--svc-primary); }
+.svc-card-primary .svc-icon { color: var(--svc-primary); border-color: rgba(0, 255, 102, 0.2); }
+.svc-card-primary .svc-card-kicker { color: var(--svc-primary); }
+.svc-card-primary .svc-price-tag { border-right-color: var(--svc-primary); color: var(--svc-primary); }
+.svc-card-primary .svc-feature-list li::before { color: var(--svc-primary); }
+.svc-card-primary:hover {
+    border-color: rgba(0, 255, 102, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 255, 102, 0.05);
+}
+
+/* پوزئیدون (آبی فیروزه‌ای) */
+.svc-card-cyan .svc-card-orb { background: var(--svc-cyan); }
+.svc-card-cyan .svc-icon { color: var(--svc-cyan); border-color: rgba(0, 240, 255, 0.2); }
+.svc-card-cyan .svc-card-kicker { color: var(--svc-cyan); }
+.svc-card-cyan .svc-price-tag { border-right-color: var(--svc-cyan); color: var(--svc-cyan); }
+.svc-card-cyan .svc-feature-list li::before { color: var(--svc-cyan); }
+.svc-card-cyan:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.05);
+}
+
+/* آتنا (آبی عمیق) */
+.svc-card-blue .svc-card-orb { background: var(--svc-blue); }
+.svc-card-blue .svc-icon { color: var(--svc-blue); border-color: rgba(59, 130, 246, 0.2); }
+.svc-card-blue .svc-card-kicker { color: var(--svc-blue); }
+.svc-card-blue .svc-price-tag { border-right-color: var(--svc-blue); color: var(--svc-blue); }
+.svc-card-blue .svc-feature-list li::before { color: var(--svc-blue); }
+.svc-card-blue:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.05);
+}
+
+/* آپولو (بنفش) */
+.svc-card-purple .svc-card-orb { background: var(--svc-purple); }
+.svc-card-purple .svc-icon { color: var(--svc-purple); border-color: rgba(168, 85, 247, 0.2); }
+.svc-card-purple .svc-card-kicker { color: var(--svc-purple); }
+.svc-card-purple .svc-price-tag { border-right-color: var(--svc-purple); color: var(--svc-purple); }
+.svc-card-purple .svc-feature-list li::before { color: var(--svc-purple); }
+.svc-card-purple:hover {
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.05);
+}
+
+/* پایپ‌لاین فرآیند کار (Workflow) */
+.svc-workflow {
+    max-width: 1200px;
+    margin: 0 auto var(--svc-spacing-lg) auto;
+    position: relative;
+    z-index: 10;
+}
+
+.svc-section-head {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.svc-section-head p {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--svc-cyan);
+    letter-spacing: 2px;
+}
+.svc-section-head h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.svc-pipeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--svc-border);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+@media (max-width: 968px) {
+    .svc-pipeline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .pipeline-line {
+        width: 2px !important;
+        height: 40px;
+        margin-right: 20px;
+    }
+}
+
+.pipeline-step {
+    flex: 1;
+}
+.pipeline-step span {
+    display: block;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--svc-cyan);
+    margin-bottom: 8px;
+}
+.pipeline-step strong {
+    display: block;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.pipeline-line {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+}
+
+/* لایه فراخوان نهایی همکاری (CTA) */
+.svc-cta {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid var(--svc-border);
+    padding: 50px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .svc-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 35px;
+    }
+}
+
+.svc-cta-label {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--svc-primary);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+}
+
+.svc-cta h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: #fff;
+    max-width: 700px;
+}
+
+.svc-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: #000;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+.svc-cta-btn:hover {
+    background: var(--svc-primary);
+    box-shadow: 0 4px 30px rgba(0, 255, 102, 0.4);
+    transform: translateY(-2px);
+}
+
+/* انیمیشن‌ها و Reveal */
+@keyframes svc-blink {
+    50% { opacity: 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* افکت‌های انتقال برای فاز نمایش با جاوا اسکریپت */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,827 @@
+.page-about {
+    --lux-bg: #050816;
+    --lux-surface: rgba(12, 19, 35, 0.82);
+    --lux-surface-2: rgba(18, 28, 48, 0.92);
+    --lux-white: #e8f5f6;
+    --lux-muted: #8197a7;
+    --lux-line: rgba(148, 198, 219, 0.14);
+    --lux-green: #43e8a5;
+    --lux-cyan: #58d9ff;
+    --lux-violet: #b28aff;
+    --lux-blue: #7b9cff;
+    --lux-mono: "Fira Code", "Cascadia Code", monospace;
+}
+
+.page-about .about-page {
+    width: 100%;
+    padding: 16px;
+}
+
+.page-about .lux-dashboard {
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+
+    position: relative;
+    isolation: isolate;
+    min-height: 790px;
+    overflow: hidden;
+    padding: 28px;
+    border: 1px solid rgba(120, 183, 205, 0.24);
+    border-radius: 28px;
+    color: var(--lux-white);
+    background:
+            radial-gradient(circle at 90% 5%, rgba(67, 232, 165, 0.13), transparent 26%),
+            radial-gradient(circle at 8% 95%, rgba(178, 138, 255, 0.14), transparent 27%),
+            linear-gradient(135deg, #0b1424 0%, #050816 48%, #07101c 100%);
+    box-shadow:
+            0 40px 100px rgba(0, 0, 0, 0.42),
+            inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.page-about .lux-dashboard:focus-visible {
+    outline: 2px solid var(--lux-cyan);
+    outline-offset: 5px;
+}
+
+.page-about .lux-dashboard__noise,
+.page-about .lux-dashboard__grid,
+.page-about .lux-dashboard__glow,
+.page-about .lux-orbit {
+    z-index: 0;
+}
+
+.page-about .lux-dashboard__noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+.page-about .lux-dashboard__scanline {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(89, 217, 255, 0.35), transparent);
+    box-shadow: 0 0 20px rgba(89, 217, 255, 0.5);
+    animation: luxScan 8s linear infinite;
+}
+
+@keyframes luxScan {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    10%,
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(820px);
+    }
+}
+
+.page-about .lux-dashboard__grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.33;
+    background-image:
+            linear-gradient(rgba(104, 189, 213, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(104, 189, 213, 0.08) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(circle at center, #000, transparent 82%);
+    -webkit-mask-image: radial-gradient(circle at center, #000, transparent 82%);
+    transform: translate(var(--mouse-x), var(--mouse-y));
+}
+
+.page-about .lux-dashboard__glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.14;
+    pointer-events: none;
+}
+
+.page-about .lux-dashboard__glow--green {
+    top: -130px;
+    right: -150px;
+    background: var(--lux-green);
+}
+
+.page-about .lux-dashboard__glow--violet {
+    bottom: -170px;
+    left: -120px;
+    background: var(--lux-violet);
+}
+
+.page-about .lux-orbit {
+    position: absolute;
+    width: 460px;
+    height: 460px;
+    border: 1px solid rgba(89, 217, 255, 0.09);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(var(--mouse-x), var(--mouse-y)) rotate(-22deg);
+}
+
+.page-about .lux-orbit::after {
+    position: absolute;
+    top: 16%;
+    left: 4%;
+    width: 7px;
+    height: 7px;
+    content: "";
+    border-radius: 50%;
+    background: var(--lux-cyan);
+    box-shadow: 0 0 18px var(--lux-cyan);
+}
+
+.page-about .lux-orbit--one {
+    top: -245px;
+    right: -130px;
+}
+
+.page-about .lux-orbit--two {
+    right: -110px;
+    bottom: -300px;
+    border-color: rgba(178, 138, 255, 0.08);
+    transform: scale(0.74) translate(var(--mouse-x), var(--mouse-y)) rotate(35deg);
+}
+
+.page-about .lux-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--lux-line);
+}
+
+.page-about .lux-identity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.page-about .lux-avatar {
+    position: relative;
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border: 1px solid rgba(67, 232, 165, 0.45);
+    border-radius: 16px;
+    color: var(--lux-green);
+    background: rgba(67, 232, 165, 0.08);
+    box-shadow: 0 0 28px rgba(67, 232, 165, 0.13);
+    font: 700 0.75rem var(--lux-mono);
+}
+
+.page-about .lux-avatar i {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--lux-bg);
+    border-radius: 50%;
+    background: var(--lux-green);
+    box-shadow: 0 0 14px var(--lux-green);
+}
+
+.page-about .lux-eyebrow,
+.page-about .lux-system,
+.page-about .lux-sidebar,
+.page-about .lux-stage__topbar,
+.page-about .lux-stage__footer,
+.page-about .lux-tab small,
+.page-about .lux-panel__eyebrow,
+.page-about .lux-metrics,
+.page-about .lux-code-card,
+.page-about .lux-terminal,
+.page-about .lux-tags,
+.page-about .lux-security-grid,
+.page-about .lux-flow,
+.page-about .lux-availability {
+    font-family: var(--lux-mono);
+}
+
+.page-about .lux-eyebrow {
+    margin: 0 0 7px;
+    color: var(--lux-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.11em;
+}
+
+.page-about .lux-identity h1 {
+    margin: 0;
+    color: var(--lux-white);
+    font: 700 1rem var(--lux-mono);
+    letter-spacing: 0.04em;
+}
+
+.page-about .lux-identity h1 span {
+    color: var(--lux-cyan);
+}
+
+.page-about .lux-system {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    direction: ltr;
+}
+
+.page-about .lux-system__item {
+    display: grid;
+    gap: 5px;
+}
+
+.page-about .lux-system__label {
+    color: var(--lux-muted);
+    font-size: 0.58rem;
+}
+
+.page-about .lux-system strong {
+    color: var(--lux-cyan);
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.page-about .lux-system strong.is-online {
+    color: var(--lux-green);
+}
+
+.page-about .lux-layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 235px minmax(0, 1fr);
+    gap: 24px;
+    min-height: 580px;
+    margin-top: 25px;
+}
+
+.page-about .lux-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--lux-line);
+    border-radius: 20px;
+    background: rgba(8, 15, 29, 0.58);
+    backdrop-filter: blur(14px);
+}
+
+.page-about .lux-sidebar__top,
+.page-about .lux-sidebar__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--lux-muted);
+    font-size: 0.59rem;
+    direction: ltr;
+}
+
+.page-about .lux-sidebar__index {
+    color: var(--lux-cyan);
+}
+
+.page-about .lux-tabs {
+    display: grid;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.page-about .lux-tab {
+    position: relative;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 2px 8px;
+    width: 100%;
+    padding: 13px 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-radius: 13px;
+    color: var(--lux-muted);
+    background: rgba(255, 255, 255, 0.025);
+    text-align: right;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.page-about .lux-tab span {
+    grid-row: span 2;
+    color: rgba(255, 255, 255, 0.35);
+    font: 0.63rem var(--lux-mono);
+    direction: ltr;
+}
+
+.page-about .lux-tab strong {
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.page-about .lux-tab small {
+    direction: ltr;
+    text-align: left;
+    font-size: 0.48rem;
+    opacity: 0.52;
+}
+
+.page-about .lux-tab:hover {
+    border-color: rgba(89, 217, 255, 0.4);
+    color: var(--lux-white);
+    transform: translateX(-4px);
+}
+
+.page-about .lux-tab.is-active {
+    border-color: rgba(67, 232, 165, 0.5);
+    color: var(--lux-green);
+    background: linear-gradient(90deg, rgba(67, 232, 165, 0.13), rgba(67, 232, 165, 0.025));
+    box-shadow: inset 3px 0 0 var(--lux-green), 0 0 25px rgba(67, 232, 165, 0.06);
+}
+
+.page-about .lux-tab.is-active span {
+    color: var(--lux-green);
+}
+
+.page-about .lux-sidebar__footer {
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--lux-line);
+    font-size: 0.52rem;
+}
+
+.page-about .pulse-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--lux-green);
+    box-shadow: 0 0 16px var(--lux-green);
+    animation: luxPulse 1.7s infinite;
+}
+
+@keyframes luxPulse {
+    50% {
+        opacity: 0.35;
+        transform: scale(0.75);
+    }
+}
+
+.page-about .lux-stage {
+    position: relative;
+    min-width: 0;
+}
+
+.page-about .lux-stage__topbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 11px;
+    color: var(--lux-muted);
+    direction: ltr;
+    font-size: 0.6rem;
+}
+
+.page-about .lux-stage__topbar span:last-child {
+    color: var(--lux-green);
+}
+
+.page-about #aboutLux .lux-panels {
+    position: relative !important;
+    min-height: 520px;
+}
+
+.page-about #aboutLux .lux-panel {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 42px;
+    border: 1px solid rgba(144, 200, 221, 0.17);
+    border-radius: 22px;
+    background:
+            linear-gradient(135deg, rgba(21, 34, 58, 0.94), rgba(7, 14, 28, 0.95)),
+            var(--lux-surface-2);
+    box-shadow:
+            0 25px 65px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(24px) scale(0.975) !important;
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+}
+
+.page-about #aboutLux .lux-panel.is-active {
+    z-index: 2;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+.page-about .lux-panel::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34%;
+    height: 2px;
+    content: "";
+    background: linear-gradient(90deg, var(--lux-green), transparent);
+    box-shadow: 0 0 20px var(--lux-green);
+}
+
+.page-about .lux-panel::after {
+    position: absolute;
+    right: -100px;
+    bottom: -130px;
+    width: 330px;
+    height: 330px;
+    content: "";
+    border: 1px solid rgba(89, 217, 255, 0.08);
+    border-radius: 50%;
+}
+
+.page-about .lux-panel__mark {
+    position: absolute;
+    top: 26px;
+    right: 30px;
+    color: rgba(255, 255, 255, 0.06);
+    font: 700 5rem/1 var(--lux-mono);
+    direction: ltr;
+}
+
+.page-about .lux-panel__eyebrow {
+    position: relative;
+    margin: 0 0 18px;
+    color: var(--lux-green);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+}
+
+.page-about .lux-panel h2 {
+    position: relative;
+    max-width: 850px;
+    margin: 0;
+    color: var(--lux-white);
+    font-size: clamp(1.8rem, 4vw, 3.8rem);
+    line-height: 1.25;
+    letter-spacing: -0.06em;
+}
+
+.page-about .lux-panel h2 span {
+    display: block;
+    margin-top: 8px;
+    color: var(--lux-cyan);
+    font: 600 0.42em/1.4 var(--lux-mono);
+    letter-spacing: 0;
+    direction: ltr;
+}
+
+.page-about .lux-panel__description {
+    position: relative;
+    max-width: 760px;
+    margin: 23px 0 0;
+    color: var(--lux-muted);
+    font-size: 1rem;
+    line-height: 2.1;
+}
+
+.page-about .lux-metrics {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 700px;
+    margin-top: 32px;
+    direction: ltr;
+}
+
+.page-about .lux-metrics > div,
+.page-about .lux-security-grid > div {
+    padding: 15px;
+    border: 1px solid rgba(67, 232, 165, 0.17);
+    border-radius: 13px;
+    background: rgba(67, 232, 165, 0.045);
+}
+
+.page-about .lux-metrics strong,
+.page-about .lux-security-grid strong {
+    display: block;
+    color: var(--lux-green);
+    font-size: 0.78rem;
+}
+
+.page-about .lux-metrics span,
+.page-about .lux-security-grid span {
+    display: block;
+    margin-top: 6px;
+    color: var(--lux-muted);
+    font-size: 0.52rem;
+}
+
+.page-about .lux-code-card,
+.page-about .lux-terminal {
+    position: relative;
+    max-width: 720px;
+    margin-top: 29px;
+    padding: 16px 18px;
+    overflow: auto;
+    border: 1px solid rgba(89, 217, 255, 0.18);
+    border-radius: 13px;
+    color: var(--lux-white);
+    background: rgba(2, 8, 18, 0.7);
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.2);
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.page-about .code-muted {
+    color: var(--lux-violet);
+}
+
+.page-about .code-green,
+.page-about .green {
+    color: var(--lux-green);
+}
+
+.page-about .code-violet {
+    color: var(--lux-violet);
+}
+
+.page-about .lux-tags {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+    direction: ltr;
+}
+
+.page-about .lux-tags span {
+    padding: 9px 12px;
+    border: 1px solid rgba(67, 232, 165, 0.2);
+    border-radius: 9px;
+    color: var(--lux-green);
+    background: rgba(67, 232, 165, 0.06);
+    font-size: 0.66rem;
+}
+
+.page-about .lux-tags--cyan span {
+    border-color: rgba(89, 217, 255, 0.22);
+    color: var(--lux-cyan);
+    background: rgba(89, 217, 255, 0.06);
+}
+
+.page-about .lux-terminal p {
+    margin: 0 0 7px;
+}
+
+.page-about .lux-terminal p:last-child {
+    margin-bottom: 0;
+}
+
+.page-about .lux-security-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 32px;
+    direction: ltr;
+}
+
+.page-about .lux-security-grid > div {
+    border-color: rgba(178, 138, 255, 0.2);
+    background: rgba(178, 138, 255, 0.055);
+}
+
+.page-about .lux-security-grid strong {
+    color: var(--lux-violet);
+}
+
+.page-about .lux-flow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+    color: var(--lux-muted);
+    font-size: 0.7rem;
+}
+
+.page-about .lux-flow span {
+    padding: 11px 13px;
+    border: 1px solid rgba(89, 217, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(89, 217, 255, 0.05);
+}
+
+.page-about .lux-flow i {
+    color: var(--lux-cyan);
+    font-style: normal;
+}
+
+.page-about .lux-flow .is-final {
+    border-color: rgba(67, 232, 165, 0.35);
+    color: var(--lux-green);
+}
+
+.page-about .lux-availability {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    color: var(--lux-green);
+    font-size: 0.75rem;
+}
+
+.page-about .lux-terminal--large {
+    line-height: 1.7;
+}
+
+.page-about .lux-stage__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    direction: ltr;
+}
+
+.page-about .lux-arrow {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid rgba(89, 217, 255, 0.25);
+    border-radius: 11px;
+    color: var(--lux-cyan);
+    background: rgba(89, 217, 255, 0.05);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.page-about .lux-arrow:hover {
+    border-color: var(--lux-cyan);
+    background: rgba(89, 217, 255, 0.13);
+    transform: translateY(-2px);
+}
+
+.page-about .lux-progress {
+    flex: 1;
+    height: 4px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.page-about .lux-progress span {
+    display: block;
+    width: 20%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--lux-green), var(--lux-cyan));
+    box-shadow: 0 0 18px rgba(67, 232, 165, 0.5);
+    transition: width 0.4s ease;
+}
+
+.page-about #aboutCounter {
+    min-width: 50px;
+    color: var(--lux-muted);
+    font-size: 0.65rem;
+    text-align: right;
+}
+
+.page-about .lux-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.page-about .lux-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--lux-cyan);
+    box-shadow: 0 0 8px var(--lux-cyan);
+    animation: luxFloat var(--duration) ease-in-out infinite alternate;
+}
+
+@keyframes luxFloat {
+    from {
+        opacity: 0.12;
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: translate3d(var(--move-x), var(--move-y), 0);
+    }
+}
+
+@media (max-width: 950px) {
+    .page-about .lux-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .page-about .lux-sidebar {
+        padding: 13px;
+    }
+
+    .page-about .lux-tabs {
+        grid-template-columns: repeat(5, minmax(100px, 1fr));
+        overflow-x: auto;
+    }
+
+    .page-about .lux-sidebar__footer {
+        display: none;
+    }
+
+    .page-about #aboutLux .lux-panel {
+        min-height: 560px;
+    }
+}
+
+@media (max-width: 680px) {
+    .page-about .about-page {
+        padding: 7px;
+    }
+
+    .page-about .lux-dashboard {
+        min-height: 850px;
+        padding: 17px;
+        border-radius: 20px;
+    }
+
+    .page-about .lux-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-about .lux-system {
+        gap: 12px;
+    }
+
+    .page-about .lux-tabs {
+        grid-template-columns: repeat(5, 125px);
+    }
+
+    .page-about #aboutLux .lux-panels {
+        min-height: 650px;
+    }
+
+    .page-about #aboutLux .lux-panel {
+        min-height: 650px;
+        padding: 28px 20px;
+    }
+
+    .page-about .lux-panel h2 {
+        font-size: 2rem;
+    }
+
+    .page-about .lux-panel__description {
+        font-size: 0.92rem;
+    }
+
+    .page-about .lux-metrics,
+    .page-about .lux-security-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-about .lux-flow {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-about .lux-flow i {
+        transform: rotate(90deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-about *,
+    .page-about *::before,
+    .page-about *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

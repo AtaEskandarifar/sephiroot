@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}تماس با من{% endblock %}
+{% block namespace %}contact{% endblock %}
+{% block content %}
+
+    <div class="cm-content-box mode">
+        <div class="cm-content-item cm-page-template">
+            <div class="cm-content-item__top">
+                <div class="top-right-bg"></div>
+                <div class="cm-content-sub">
+                    <div class="icon">
+                        <img class="svg" src="{% static 'assets/img/icons/contact.svg' %}" alt="">
+                    </div>
+                    <p>با دفتر ما تماس بگیرید</p>
+                </div>
+                <h1 class="main-title">
+                    انتخاب بهترین <BR>
+                    با <span> تماس بگیرید </span>
+                    <u>
+                        <img src="{% static 'assets/img/content/line.svg' %}" alt="">
+                    </u>
+                </h1>
+            </div>
+
+            <!-- contact content -->
+            <div class="cm-contact-area">
+                <div class="cm-contact-method">
+                    <h3 class="section-title">تماس</h3>
+                    <div class="cm-contact-method__content">
+                        <!-- single contact item -->
+                        <div class="single-contact-item">
+                            <div class="single-contact-item__top">
+                                <div class="cm-icon"><img src="{% static 'assets/img/icons/phone-call.svg' %}" alt="call" height="50" width="50"></div>
+                                <div class="cm-text">
+                                    <p>تماس</p>
+                                </div>
+                            </div>
+                            <div class="single-contact-item__bottom">
+                                <a href="callto:5555">+55 888 666 22</a>
+                                <a href="callto:5555">+55 888 666 33</a>
+                            </div>
+                        </div>
+                        <!-- single contact item end -->
+                        <!-- single contact item -->
+                        <div class="single-contact-item">
+                            <div class="single-contact-item__top">
+                                <div class="cm-icon">
+                                    <img src="{% static 'assets/img/icons/mail-open.svg' %}" alt="mail-open" height="50" width="50"></div>
+                                <div class="cm-text">
+                                    <p>ایمیل</p>
+                                </div>
+                            </div>
+                            <div class="single-contact-item__bottom">
+                                <a href="mailto:Info.axz@gmail.com">Info.axz@gmail.com</a>
+                                <a href="mailto:Info.axz@gmail.com">Info.mela@gmail.com</a>
+                            </div>
+                        </div>
+                        <!-- single contact item end -->
+                        <!-- single contact item -->
+                        <div class="single-contact-item">
+                            <div class="single-contact-item__top">
+                                <div class="cm-icon">
+                                    <img src="{% static 'assets/img/icons/location-dot.svg' %}" alt="location" height="50" width="50">
+                                </div>
+                                <div class="cm-text">
+                                    <p>مکان</p>
+                                </div>
+                            </div>
+                            <div class="single-contact-item__bottom">
+                                <p class="location-text">
+                                    میرپور 12 ، پولوبی ، <br>
+                                    داکا ، بنگلادش
+                                </p>
+                            </div>
+                        </div>
+                        <!-- single contact item end -->
+                    </div>
+                </div>
+                <!-- location map -->
+                <div class="cm-location-map">
+                    <h3 class="section-title">نقشه</h3>
+                    <div class="cm-location-map__content">
+                        <div class="cm-map-iframe">
+                            <iframe src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Mirpur%20Dhaka+(Martin)&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <!-- contact form -->
+                <div class="cm-contact-form">
+                    <h3 class="section-title">تماس با ما</h3>
+                    <div class="cm-contact-form__content">
+                        <form action="mail-sender.php" method="POST" class="cm-form">
+                            <div class="single-input">
+                                <div class="single-input__item">
+                                    <label for="fname">اسم کوچک شما <span>*</span></label>
+                                    <input type="text" name="fname" id="fname" required="">
+                                </div>
+                                <div class="single-input__item">
+                                    <label for="lname">نام خانوادگی شما <span>*</span></label>
+                                    <input type="text" name="lname" id="lname" required="">
+                                </div>
+                            </div>
+                            <div class="single-input">
+                                <div class="single-input__item">
+                                    <label for="email">آدرس ایمیل شما <span>*</span></label>
+                                    <input type="email" name="email" id="email" required="">
+                                </div>
+                                <div class="single-input__item">
+                                    <label for="phone">شماره تلفن شما <span>*</span></label>
+                                    <input type="number" name="phone" id="phone" required="">
+                                </div>
+                            </div>
+                            <div class="single-input">
+                                <div class="single-input__item w-full">
+                                    <label for="msg">پیام شما <span>*</span></label>
+                                    <textarea name="msg" id="msg" required=""></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="cm-btn primary">ارسال</button>
+                        </form>
+                        <!-- message sending notification -->
+                        <div class="contact__msg mt-40"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- contact content end -->
+        </div>
+    </div>
+
+
+{% endblock %}

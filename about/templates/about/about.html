@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}درباره من | Sephiroot{% endblock %}
+{% block body_class %}page-about{% endblock %}
+
+{% block content %}
+    <main class="about-page" data-about-page>
+        <section
+                class="lux-dashboard"
+                id="aboutLux"
+                tabindex="0"
+                aria-label="پروفایل عطا اسکندری فر">
+
+            <div class="lux-dashboard__noise"></div>
+            <div class="lux-dashboard__scanline"></div>
+            <div class="lux-dashboard__grid"></div>
+
+            <div class="lux-orbit lux-orbit--one"></div>
+            <div class="lux-orbit lux-orbit--two"></div>
+
+            <div class="lux-dashboard__glow lux-dashboard__glow--green"></div>
+            <div class="lux-dashboard__glow lux-dashboard__glow--violet"></div>
+
+            <div class="lux-particles" aria-hidden="true"></div>
+
+            <header class="lux-header">
+                <div class="lux-identity">
+                    <div class="lux-avatar">
+                        <span>A.E</span>
+                        <i></i>
+                    </div>
+
+                    <div>
+                        <p class="lux-eyebrow">/ IDENTITY NODE /0x010110</p>
+                        <h1>SEPHIROOT <span>// ABOUT</span></h1>
+                    </div>
+                </div>
+
+                <div class="lux-system">
+                    <div class="lux-system__item">
+                        <span class="lux-system__label">SYSTEM</span>
+                        <strong class="is-online">ONLINE</strong>
+                    </div>
+
+                    <div class="lux-system__item">
+                        <span class="lux-system__label">LOCATION</span>
+                        <strong>URMIA, IR</strong>
+                    </div>
+
+                    <div class="lux-system__item">
+                        <span class="lux-system__label">MODE</span>
+                        <strong>REMOTE/HYBRID</strong>
+                    </div>
+                </div>
+            </header>
+
+            <div class="lux-layout">
+                <aside class="lux-sidebar">
+                    <div class="lux-sidebar__top">
+                        <span class="lux-sidebar__title">PROFILE_MAP</span>
+                        <span class="lux-sidebar__index">05 NODES</span>
+                    </div>
+
+                    <nav class="lux-tabs" aria-label="بخش‌های پروفایل">
+                        <button class="lux-tab is-active" type="button" data-tab="0">
+                            <span>01</span>
+                            <strong>هویت اصلی</strong>
+                            <small>CORE IDENTITY</small>
+                        </button>
+
+                        <button class="lux-tab" type="button" data-tab="1">
+                            <span>02</span>
+                            <strong>توسعه بک‌اند</strong>
+                            <small>BACKEND SYSTEMS</small>
+                        </button>
+
+                        <button class="lux-tab" type="button" data-tab="2">
+                            <span>03</span>
+                            <strong>امنیت و SOC</strong>
+                            <small>DEFENSIVE OPS</small>
+                        </button>
+
+                        <button class="lux-tab" type="button" data-tab="3">
+                            <span>04</span>
+                            <strong>اتوماسیون</strong>
+                            <small>AUTOMATION</small>
+                        </button>
+
+                        <button class="lux-tab" type="button" data-tab="4">
+                            <span>05</span>
+                            <strong>همکاری</strong>
+                            <small>COLLABORATION</small>
+                        </button>
+                    </nav>
+
+                    <div class="lux-sidebar__footer">
+                        <span class="pulse-dot"></span>
+                        <span>SECURE CHANNEL READY</span>
+                    </div>
+                </aside>
+
+                <section class="lux-stage" aria-live="polite">
+                    <div class="lux-stage__topbar">
+                        <span id="panelNode">NODE_01</span>
+                        <span id="panelStatus">ACTIVE_CONNECTION</span>
+                    </div>
+
+                    <div class="lux-panels">
+                        <article class="lux-panel is-active" data-panel="0">
+                            <div class="lux-panel__mark">01</div>
+                            <p class="lux-panel__eyebrow">CORE IDENTITY / ONLINE</p>
+
+                            <h2>
+                                عطا اسکندری‌فر
+                                <span>SEPHIROOT</span>
+                            </h2>
+
+                            <p class="lux-panel__description">
+                                توسعه‌دهنده بک‌اند و علاقه‌مند به امنیت سایبری؛
+                                تمرکز من روی ساخت سیستم‌های تمیز، امن، مقیاس‌پذیر و قابل اعتماد است.
+                            </p>
+
+                            <div class="lux-metrics">
+                                <div>
+                                    <strong>PYTHON</strong>
+                                    <span>PRIMARY STACK</span>
+                                </div>
+                                <div>
+                                    <strong>DJANGO</strong>
+                                    <span>BACKEND CORE</span>
+                                </div>
+                                <div>
+                                    <strong>SOC L1</strong>
+                                    <span>CAREER PATH</span>
+                                </div>
+                            </div>
+
+                            <div class="lux-code-card" dir="ltr">
+                                <span class="code-muted">const</span>
+                                <span class="code-green">sephiroot</span>
+                                <span class="code-white">=</span>
+                                <span class="code-violet">"build_secure_systems"</span><span>;</span>
+                            </div>
+                        </article>
+
+                        <article class="lux-panel" data-panel="1">
+                            <div class="lux-panel__mark">02</div>
+                            <p class="lux-panel__eyebrow">APPLICATION LAYER / STABLE</p>
+
+                            <h2>
+                                ساخت سیستم‌های حرفه‌ای
+                                <span>DJANGO ENGINEERING</span>
+                            </h2>
+
+                            <p class="lux-panel__description">
+                                طراحی بک‌اندهای ماژولار، API محور و قابل توسعه با تمرکز بر
+                                معماری تمیز، مدل‌سازی داده، امنیت و عملکرد مناسب.
+                            </p>
+
+                            <div class="lux-tags">
+                                <span>Django</span>
+                                <span>Python</span>
+                                <span>REST API</span>
+                                <span>MySQL</span>
+                                <span>Authentication</span>
+                                <span>Architecture</span>
+                            </div>
+
+                            <div class="lux-terminal" dir="ltr">
+                                <p><b>$</b> django-admin startproject secure_core</p>
+                                <p><b class="green">✓</b> modular architecture initialized</p>
+                                <p><b class="green">✓</b> API layer ready for deployment</p>
+                            </div>
+                        </article>
+
+                        <article class="lux-panel" data-panel="2">
+                            <div class="lux-panel__mark">03</div>
+                            <p class="lux-panel__eyebrow">DEFENSIVE OPS / MONITORING</p>
+
+                            <h2>
+                                امنیت، مانیتورینگ و تحلیل
+                                <span>SOC & WEB SECURITY</span>
+                            </h2>
+
+                            <p class="lux-panel__description">
+                                تمرکز روی تحلیل لاگ، کشف رفتارهای مشکوک، آسیب‌پذیری‌های وب،
+                                مانیتورینگ زیرساخت و ساخت دید بهتر نسبت به تهدیدات.
+                            </p>
+
+                            <div class="lux-security-grid">
+                                <div>
+                                    <span>OWASP</span>
+                                    <strong>TOP 10</strong>
+                                </div>
+                                <div>
+                                    <span>SIEM</span>
+                                    <strong>SPLUNK</strong>
+                                </div>
+                                <div>
+                                    <span>NETWORK</span>
+                                    <strong>CCNA</strong>
+                                </div>
+                                <div>
+                                    <span>RECON</span>
+                                    <strong>ACTIVE</strong>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lux-panel" data-panel="3">
+                            <div class="lux-panel__mark">04</div>
+                            <p class="lux-panel__eyebrow">AUTOMATION PIPELINE / READY</p>
+
+                            <h2>
+                                تبدیل کار تکراری به ابزار
+                                <span>PYTHON AUTOMATION</span>
+                            </h2>
+
+                            <p class="lux-panel__description">
+                                ساخت ابزارهای سفارشی برای Recon، جمع‌آوری اطلاعات، پردازش داده،
+                                تست سرویس‌ها و افزایش سرعت عملیات فنی.
+                            </p>
+
+                            <div class="lux-flow" dir="ltr">
+                                <span>INPUT</span>
+                                <i>→</i>
+                                <span>PROCESS</span>
+                                <i>→</i>
+                                <span>ANALYZE</span>
+                                <i>→</i>
+                                <span class="is-final">ACTION</span>
+                            </div>
+
+                            <div class="lux-tags lux-tags--cyan">
+                                <span>Recon</span>
+                                <span>OSINT</span>
+                                <span>Subfinder</span>
+                                <span>HTTPX</span>
+                                <span>Nmap</span>
+                                <span>Custom Tooling</span>
+                            </div>
+                        </article>
+
+                        <article class="lux-panel" data-panel="4">
+                            <div class="lux-panel__mark">05</div>
+                            <p class="lux-panel__eyebrow">COMMUNICATION CHANNEL / OPEN</p>
+
+                            <h2>
+                                آماده توسعه و همکاری در پروژه های شما
+                                <span>LET'S CONNECT</span>
+                            </h2>
+
+                            <p class="lux-panel__description">
+                                آماده همکاری در پروژه‌های بک‌اند، امنیت وب، اتوماسیون،
+                                داشبوردهای مدیریتی و راه‌حل‌های فنی سفارشی.
+                            </p>
+
+                            <div class="lux-availability">
+                                <span class="pulse-dot"></span>
+                                <strong>AVAILABLE FOR WORK</strong>
+                            </div>
+
+                            <div class="lux-terminal lux-terminal--large" dir="ltr">
+                                <p><b class="green">></b> STATUS: READY</p>
+                                <p><b class="green">></b> MODE: REMOTE / FREELANCE</p>
+                                <p><b class="green">></b> CHANNEL: SECURE_CONNECTION_READY</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="lux-stage__footer">
+                        <button class="lux-arrow" id="aboutPrev" type="button" aria-label="بخش قبلی">←</button>
+
+                        <div class="lux-progress">
+                            <span id="aboutProgress"></span>
+                        </div>
+
+                        <button class="lux-arrow" id="aboutNext" type="button" aria-label="بخش بعدی">→</button>
+
+                        <output id="aboutCounter">01 / 05</output>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+{% endblock %}

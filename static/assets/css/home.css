@@ -1,0 +1,1045 @@
+/* =========================================
+   Sephiroot Home Page
+   Home Hero + Technical Dossier
+========================================= */
+
+.page-home {
+    --home-bg: #080d14;
+    --home-surface: rgba(16, 24, 35, 0.76);
+    --home-surface-strong: rgba(18, 28, 41, 0.94);
+    --home-surface-soft: rgba(255, 255, 255, 0.035);
+
+    --home-heading: #f2f7f9;
+    --home-text: #b5c1ca;
+    --home-muted: #7f8e9b;
+
+    --home-green: #42e6a4;
+    --home-cyan: #55d6ed;
+    --home-blue: #709cff;
+    --home-violet: #b088ff;
+
+    --home-border: rgba(188, 216, 231, 0.13);
+    --home-border-strong: rgba(74, 230, 171, 0.42);
+    --home-shadow: rgba(0, 0, 0, 0.4);
+
+    --home-radius-xl: 28px;
+    --home-radius-lg: 20px;
+    --home-radius-md: 14px;
+    --home-radius-sm: 9px;
+}
+
+/* =========================================
+   Hero Layout
+========================================= */
+
+.page-home .home-hero {
+    position: relative;
+}
+
+.page-home .home-hero__intro {
+    position: sticky;
+    top: 72px;
+    min-width: 0;
+    padding: clamp(26px, 4vw, 52px);
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--home-border);
+    border-radius: var(--home-radius-xl);
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(18, 28, 41, 0.95),
+                    rgba(8, 14, 22, 0.88)
+            );
+    box-shadow:
+            0 32px 90px var(--home-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.page-home .home-hero__intro::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    top: -220px;
+    inset-inline-end: -180px;
+    width: 480px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+            radial-gradient(
+                    circle,
+                    rgba(66, 230, 164, 0.18) 0,
+                    rgba(66, 230, 164, 0.06) 38%,
+                    transparent 70%
+            );
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.page-home .home-hero__intro::after {
+    content: "";
+    position: absolute;
+    z-index: -3;
+    inset: 0;
+    opacity: 0.23;
+    background-image:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(to bottom, #000, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 80%);
+    pointer-events: none;
+}
+
+/* =========================================
+   Availability Badge
+========================================= */
+
+.page-home .hero-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    margin-bottom: 22px;
+    padding: 8px 13px;
+    border: 1px solid rgba(66, 230, 164, 0.2);
+    border-radius: 999px;
+    color: #bfead8;
+    background: rgba(66, 230, 164, 0.065);
+    font-size: 0.73rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.page-home .hero-availability__dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    background: var(--home-green);
+    box-shadow: 0 0 14px rgba(66, 230, 164, 0.75);
+}
+
+.page-home .hero-availability__dot::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgba(66, 230, 164, 0.45);
+    border-radius: inherit;
+    animation: home-status-pulse 2.2s ease-out infinite;
+}
+
+/* =========================================
+   Hero Eyebrow
+========================================= */
+
+.page-home .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 18px;
+    color: var(--home-cyan);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: clamp(0.68rem, 1vw, 0.78rem);
+    font-weight: 600;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    direction: ltr;
+}
+
+.page-home .hero-eyebrow i {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--home-green);
+    box-shadow: 0 0 10px rgba(66, 230, 164, 0.65);
+}
+
+/* =========================================
+   Hero Title
+========================================= */
+
+.page-home .hero-title {
+    max-width: 900px;
+    margin: 0;
+    color: var(--home-heading);
+    font-size: clamp(2.15rem, 4.5vw, 4.65rem);
+    font-weight: 850;
+    line-height: 1.28;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+}
+
+.page-home .hero-title__accent {
+    position: relative;
+    display: inline;
+    color: transparent;
+    background:
+            linear-gradient(
+                    100deg,
+                    var(--home-green) 5%,
+                    var(--home-cyan) 52%,
+                    #83adff 100%
+            );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-home .hero-title__accent::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -7px;
+    height: 2px;
+    border-radius: 2px;
+    opacity: 0.7;
+    background:
+            linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--home-green),
+                    var(--home-cyan),
+                    transparent
+            );
+}
+
+/* =========================================
+   Technical Role
+========================================= */
+
+.page-home .hero-role {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: 26px;
+    padding: 12px 15px;
+    border: 1px solid rgba(112, 156, 255, 0.14);
+    border-radius: var(--home-radius-md);
+    color: #9eb0c0;
+    background: rgba(4, 9, 15, 0.44);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.7rem;
+    direction: ltr;
+}
+
+.page-home .hero-role span:not(:first-child)::before {
+    content: "/";
+    margin-inline-end: 14px;
+    color: rgba(181, 193, 202, 0.3);
+}
+
+.page-home .hero-role__prompt {
+    color: var(--home-green);
+    font-weight: 700;
+}
+
+/* =========================================
+   Hero Description
+========================================= */
+
+.page-home .hero-description {
+    position: relative;
+    display: grid;
+    gap: 16px;
+    max-width: 900px;
+    margin-top: 28px;
+    padding-inline-start: 20px;
+    border-inline-start: 1px solid rgba(85, 214, 237, 0.22);
+}
+
+.page-home .hero-description::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline-start: -2px;
+    width: 3px;
+    height: 76px;
+    border-radius: 4px;
+    background:
+            linear-gradient(
+                    to bottom,
+                    var(--home-green),
+                    var(--home-cyan),
+                    transparent
+            );
+    box-shadow: 0 0 20px rgba(85, 214, 237, 0.24);
+}
+
+.page-home .hero-description > p {
+    margin: 0;
+    color: var(--home-text);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 2.08;
+    text-align: justify;
+    text-wrap: pretty;
+}
+
+.page-home .hero-description > p:first-child::first-letter {
+    color: var(--home-green);
+    font-size: 1.35em;
+    font-weight: 800;
+}
+
+/* =========================================
+   Technical Dossier
+========================================= */
+
+.page-home .hero-dossier {
+    display: block;
+    max-width: 100%;
+    margin-top: 28px;
+    padding-inline-start: 20px;
+    border-inline-start: 1px solid rgba(85, 214, 237, 0.22);
+}
+
+.page-home .hero-dossier::before {
+    height: 92px;
+}
+
+.page-home .hero-dossier__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 17px;
+    border-bottom: 1px solid rgba(188, 216, 231, 0.1);
+}
+
+.page-home .hero-dossier__identity {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.page-home .hero-dossier__pulse {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+    border-radius: 50%;
+    background: var(--home-green);
+    box-shadow: 0 0 14px rgba(66, 230, 164, 0.8);
+}
+
+.page-home .hero-dossier__pulse::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgba(66, 230, 164, 0.45);
+    border-radius: 50%;
+    animation: home-status-pulse 2.4s ease-out infinite;
+}
+
+.page-home .hero-dossier__overline,
+.page-home .hero-dossier__identity strong {
+    display: block;
+}
+
+.page-home .hero-dossier__overline {
+    color: var(--home-cyan);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    direction: ltr;
+}
+
+.page-home .hero-dossier__identity strong {
+    margin-top: 4px;
+    color: var(--home-heading);
+    font-size: 0.83rem;
+}
+
+.page-home .hero-dossier__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 9px;
+    border: 1px solid rgba(66, 230, 164, 0.18);
+    border-radius: 6px;
+    color: var(--home-green);
+    background: rgba(66, 230, 164, 0.06);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.58rem;
+    direction: ltr;
+    white-space: nowrap;
+}
+
+.page-home .hero-dossier__status i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.page-home .hero-dossier__lead {
+    margin: 19px 0 21px;
+    color: var(--home-text);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 2.05;
+}
+
+.page-home .hero-dossier__lead mark {
+    padding: 1px 4px;
+    border-radius: 4px;
+    color: #c8f6e1;
+    background: rgba(66, 230, 164, 0.13);
+}
+
+.page-home .hero-dossier__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.page-home .dossier-card {
+    --dossier-accent: var(--home-green);
+
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--home-border);
+    border-radius: var(--home-radius-md);
+    background: rgba(255, 255, 255, 0.025);
+    transition:
+            border-color 220ms ease,
+            background-color 220ms ease,
+            box-shadow 220ms ease;
+}
+
+.page-home .dossier-card--backend {
+    --dossier-accent: var(--home-cyan);
+}
+
+.page-home .dossier-card--security {
+    --dossier-accent: var(--home-violet);
+}
+
+.page-home .dossier-card--deployment {
+    --dossier-accent: var(--home-blue);
+}
+
+.page-home .dossier-card:hover,
+.page-home .dossier-card[open] {
+    border-color: color-mix(
+            in srgb,
+            var(--dossier-accent) 42%,
+            transparent
+    );
+    background: color-mix(
+            in srgb,
+            var(--dossier-accent) 6%,
+            transparent
+    );
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.page-home .dossier-card summary {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    min-height: 74px;
+    padding: 13px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.page-home .dossier-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.page-home .dossier-card__index {
+    align-self: start;
+    color: var(--dossier-accent);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    direction: ltr;
+}
+
+.page-home .dossier-card__icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid color-mix(
+            in srgb,
+            var(--dossier-accent) 30%,
+            transparent
+    );
+    border-radius: 10px;
+    color: var(--dossier-accent);
+    background: color-mix(
+            in srgb,
+            var(--dossier-accent) 9%,
+            transparent
+    );
+}
+
+.page-home .dossier-card__icon svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.page-home .dossier-card__heading {
+    min-width: 0;
+}
+
+.page-home .dossier-card__heading strong,
+.page-home .dossier-card__heading small {
+    display: block;
+}
+
+.page-home .dossier-card__heading strong {
+    color: var(--home-heading);
+    font-size: 0.78rem;
+}
+
+.page-home .dossier-card__heading small {
+    margin-top: 3px;
+    overflow: hidden;
+    color: var(--home-muted);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.55rem;
+    line-height: 1.5;
+    direction: ltr;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.page-home .dossier-card__toggle {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    border: 1px solid rgba(188, 216, 231, 0.15);
+    border-radius: 50%;
+}
+
+.page-home .dossier-card__toggle::before,
+.page-home .dossier-card__toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 1px;
+    background: var(--dossier-accent);
+    translate: -50% -50%;
+    transition:
+            rotate 220ms ease,
+            opacity 220ms ease;
+}
+
+.page-home .dossier-card__toggle::after {
+    rotate: 90deg;
+}
+
+.page-home .dossier-card[open] .dossier-card__toggle::after {
+    opacity: 0;
+    rotate: 0deg;
+}
+
+.page-home .dossier-card__body {
+    padding: 0 13px 14px;
+    animation: home-dossier-reveal 250ms ease both;
+}
+
+.page-home .dossier-card__body p {
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(188, 216, 231, 0.09);
+    color: var(--home-text);
+    font-size: 0.76rem;
+    line-height: 1.95;
+    text-align: right;
+}
+
+.page-home .dossier-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
+}
+
+.page-home .dossier-card__tags span {
+    padding: 4px 7px;
+    border: 1px solid color-mix(
+            in srgb,
+            var(--dossier-accent) 22%,
+            transparent
+    );
+    border-radius: 5px;
+    color: var(--dossier-accent);
+    background: color-mix(
+            in srgb,
+            var(--dossier-accent) 7%,
+            transparent
+    );
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.53rem;
+    direction: ltr;
+}
+
+/* =========================================
+   Hero Actions
+========================================= */
+
+.page-home .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 32px;
+}
+
+.page-home .hero-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-height: 52px;
+    padding: 0 23px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    font-size: 0.88rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition:
+            border-color 220ms ease,
+            color 220ms ease,
+            background-color 220ms ease,
+            box-shadow 220ms ease,
+            translate 220ms ease;
+}
+
+.page-home .hero-button span,
+.page-home .hero-button svg {
+    position: relative;
+    z-index: 2;
+}
+
+.page-home .hero-button svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.page-home .hero-button--primary {
+    color: #03130d;
+    background: linear-gradient(110deg, var(--home-green), #6ce9bc);
+    box-shadow: 0 14px 34px rgba(66, 230, 164, 0.2);
+}
+
+.page-home .hero-button--primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+            linear-gradient(
+                    110deg,
+                    transparent 20%,
+                    rgba(255, 255, 255, 0.5) 48%,
+                    transparent 75%
+            );
+    translate: 120% 0;
+    transition: translate 550ms ease;
+}
+
+.page-home .hero-button--primary:hover {
+    color: #03130d;
+    box-shadow: 0 18px 42px rgba(66, 230, 164, 0.3);
+    translate: 0 -3px;
+}
+
+.page-home .hero-button--primary:hover::before {
+    translate: -120% 0;
+}
+
+.page-home .hero-button--secondary {
+    border-color: var(--home-border);
+    color: var(--home-heading);
+    background: var(--home-surface-soft);
+}
+
+.page-home .hero-button--secondary:hover {
+    border-color: rgba(85, 214, 237, 0.4);
+    color: var(--home-cyan);
+    background: rgba(85, 214, 237, 0.07);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
+    translate: 0 -3px;
+}
+
+/* =========================================
+   Trust Line
+========================================= */
+
+.page-home .hero-trust {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-top: 27px;
+    color: var(--home-muted);
+    font-size: 0.72rem;
+    line-height: 1.7;
+}
+
+.page-home .hero-trust__label {
+    color: var(--home-green);
+    font-weight: 750;
+}
+
+.page-home .hero-trust__line {
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--home-green), transparent);
+}
+
+.page-home .hero-trust > span:not(.hero-trust__label)::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-inline-end: 7px;
+    border-radius: 50%;
+    background: rgba(85, 214, 237, 0.7);
+}
+
+/* =========================================
+   Expertise Cards
+========================================= */
+
+.page-home .hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 36px;
+}
+
+.page-home .highlight-item {
+    --highlight-color: var(--home-green);
+
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 13px;
+    min-width: 0;
+    padding: 18px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--home-border);
+    border-radius: var(--home-radius-lg);
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.045),
+                    rgba(255, 255, 255, 0.012)
+            );
+    transition:
+            border-color 250ms ease,
+            background-color 250ms ease,
+            box-shadow 250ms ease,
+            translate 250ms ease;
+}
+
+.page-home .highlight-item--security {
+    --highlight-color: var(--home-cyan);
+}
+
+.page-home .highlight-item--server {
+    --highlight-color: var(--home-blue);
+}
+
+.page-home .highlight-item::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: auto -30px -60px auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.11;
+    background: var(--highlight-color);
+    filter: blur(25px);
+    transition: opacity 250ms ease;
+}
+
+.page-home .highlight-item:hover {
+    border-color: color-mix(
+            in srgb,
+            var(--highlight-color) 42%,
+            transparent
+    );
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+    translate: 0 -5px;
+}
+
+.page-home .highlight-item:hover::before {
+    opacity: 0.2;
+}
+
+.page-home .highlight-item__number {
+    position: absolute;
+    top: 10px;
+    inset-inline-end: 12px;
+    color: rgba(255, 255, 255, 0.08);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.page-home .highlight-item__icon {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    border: 1px solid color-mix(
+            in srgb,
+            var(--highlight-color) 26%,
+            transparent
+    );
+    border-radius: 11px;
+    color: var(--highlight-color);
+    background: color-mix(
+            in srgb,
+            var(--highlight-color) 8%,
+            transparent
+    );
+}
+
+.page-home .highlight-item__icon svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.65;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.page-home .highlight-item__content {
+    min-width: 0;
+}
+
+.page-home .highlight-item strong,
+.page-home .highlight-item__content span {
+    display: block;
+}
+
+.page-home .highlight-item strong {
+    padding-inline-end: 20px;
+    color: var(--home-heading);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    direction: ltr;
+    text-align: left;
+}
+
+.page-home .highlight-item__content span {
+    margin-top: 6px;
+    color: var(--home-muted);
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.64rem;
+    line-height: 1.75;
+    direction: ltr;
+    text-align: left;
+}
+
+/* =========================================
+   Light Theme
+========================================= */
+
+[data-theme="light"] .page-home {
+    --home-surface: rgba(255, 255, 255, 0.86);
+    --home-surface-strong: rgba(255, 255, 255, 0.96);
+    --home-heading: #10212b;
+    --home-text: #445964;
+    --home-muted: #687c86;
+    --home-border: rgba(26, 52, 67, 0.13);
+    --home-shadow: rgba(30, 63, 80, 0.13);
+}
+
+[data-theme="light"] .page-home .home-hero__intro {
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.96),
+                    rgba(239, 247, 248, 0.9)
+            );
+}
+
+[data-theme="light"] .page-home .hero-role {
+    color: #566b76;
+    background: rgba(223, 237, 240, 0.55);
+}
+
+[data-theme="light"] .page-home .dossier-card,
+[data-theme="light"] .page-home .highlight-item {
+    background:
+            linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.9),
+                    rgba(235, 244, 246, 0.7)
+            );
+}
+
+[data-theme="light"] .page-home .hero-dossier__lead mark {
+    color: #16704e;
+}
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 1199px) {
+    .page-home .home-hero__intro {
+        padding: clamp(24px, 4vw, 40px);
+    }
+
+    .page-home .hero-highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 991px) {
+    .page-home .home-hero__intro {
+        position: relative;
+        top: auto;
+    }
+
+    .page-home .hero-title {
+        font-size: clamp(2rem, 8vw, 3.8rem);
+    }
+
+    .page-home .hero-description {
+        max-width: none;
+    }
+}
+
+@media (max-width: 680px) {
+    .page-home .hero-dossier__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-home .hero-dossier__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    .page-home .home-hero__intro {
+        padding: 22px 18px;
+        border-radius: var(--home-radius-lg);
+    }
+
+    .page-home .hero-title {
+        font-size: clamp(1.85rem, 10vw, 2.7rem);
+        line-height: 1.4;
+    }
+
+    .page-home .hero-eyebrow {
+        justify-content: flex-start;
+    }
+
+    .page-home .hero-description,
+    .page-home .hero-dossier {
+        padding-inline-start: 14px;
+    }
+
+    .page-home .hero-description > p,
+    .page-home .hero-dossier__lead {
+        font-size: 0.88rem;
+        line-height: 2;
+        text-align: start;
+    }
+
+    .page-home .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .page-home .hero-button {
+        width: 100%;
+    }
+
+    .page-home .hero-role {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-home .hero-role span:not(:first-child)::before,
+    .page-home .hero-trust__line {
+        display: none;
+    }
+
+    .page-home .hero-dossier__status {
+        font-size: 0.54rem;
+    }
+
+    .page-home .dossier-card__body p {
+        font-size: 0.75rem;
+        line-height: 1.9;
+    }
+}
+
+/* =========================================
+   Motion Accessibility
+========================================= */
+
+@keyframes home-status-pulse {
+    0% {
+        opacity: 0.8;
+        scale: 0.7;
+    }
+
+    75%,
+    100% {
+        opacity: 0;
+        scale: 1.7;
+    }
+}
+
+@keyframes home-dossier-reveal {
+    from {
+        opacity: 0;
+        translate: 0 -6px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-home .hero-availability__dot::before,
+    .page-home .hero-dossier__pulse::after,
+    .page-home .dossier-card__body {
+        animation: none;
+    }
+
+    .page-home .hero-button,
+    .page-home .highlight-item,
+    .page-home .dossier-card {
+        transition: none;
+    }
+}

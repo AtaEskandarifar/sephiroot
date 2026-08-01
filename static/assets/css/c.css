@@ -1,0 +1,101 @@
+/* Home — parallax cards */
+.page-home .cm-content-item.index {
+  position: relative;
+}
+
+.page-home .main-title span {
+  color: var(--sephi-neon, #00ffaa);
+}
+
+.page-home .parallax-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+  perspective: 1200px;
+}
+
+.page-home .parallax-page {
+  position: relative;
+  padding: 28px 22px;
+  border-radius: 22px;
+  background: rgba(16, 23, 38, 0.78);
+  border: 1px solid rgba(0, 255, 170, 0.18);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  /* transform از JS — transition روی transform نگذارید */
+}
+
+.page-home .parallax-page:hover {
+  border-color: rgba(0, 255, 170, 0.45);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.page-home .page-noise,
+.page-home .page-grid,
+.page-home .page-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page-home .page-grid {
+  background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.35;
+}
+
+.page-home .page-glow {
+  opacity: 0.5;
+}
+
+.page-home .page-1 .page-glow {
+  background: radial-gradient(circle at 80% 0%, rgba(0, 255, 170, 0.25), transparent 55%);
+}
+
+.page-home .page-2 .page-glow {
+  background: radial-gradient(circle at 80% 0%, rgba(0, 229, 255, 0.22), transparent 55%);
+}
+
+.page-home .page-3 .page-glow {
+  background: radial-gradient(circle at 80% 0%, rgba(180, 108, 255, 0.22), transparent 55%);
+}
+
+.page-home .page-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.8rem;
+  color: #9aa7bd;
+}
+
+.page-home .page-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.page-home .page-desc {
+  line-height: 1.9;
+  color: #9aa7bd;
+  font-size: 0.92rem;
+}
+
+.page-home .page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.page-home .page-meta span {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 170, 0.2);
+  color: #00ffaa;
+}

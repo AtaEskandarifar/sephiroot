@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}خدمات{% endblock %}
+{% block namespace %}services{% endblock %}
+{% block content %}
+
+    <section class="sephi-services-page">
+        <!-- لایه‌های بصری سایبرپانک/اساطیری -->
+        <div class="svc-noise"></div>
+        <div class="svc-grid-bg"></div>
+        <div class="svc-scanline"></div>
+
+        <div class="svc-aurora svc-aurora-1"></div>
+        <div class="svc-aurora svc-aurora-2"></div>
+        <div class="svc-aurora svc-aurora-3"></div>
+
+        <div class="svc-spotlight"></div>
+        <div class="svc-particles" aria-hidden="true"></div>
+
+        <!-- هیرو بخش خدمات -->
+        <div class="svc-hero reveal-block">
+            <div class="svc-badge">
+                <span class="svc-badge-dot"></span>
+                <span>SEPHIROOT // PROTOCOL.AEGIS.ACTIVE</span>
+            </div>
+
+            <h1 class="svc-title">
+                معماری اساطیری، <span>توسعه فول‌استک و امنیت زرهی زیرساخت</span>
+            </h1>
+
+            <p class="svc-description">
+                کدهای تمیز و توسعه‌یافته با جنگو، سرورهای سخت‌سازی شده در لایه‌های لینوکس و ارزیابی عمیق امنیت بر اساس استانداردهای جهانی. پایداری، سرعت و دفاع فعال، اصول جدایی‌ناپذیر سیستم‌هایی هستند که برای شما می‌سازم.
+            </p>
+
+            <div class="svc-typing-wrap">
+                <span class="svc-typing-label">system.log</span>
+                <span class="svc-typing-text" data-typing='[
+                    "HEPHAESTUS: forging secure django core...",
+                    "POSEIDON: hardening vps network gates...",
+                    "ATHENA: auditing active threat vectors...",
+                    "APOLLO: deploying elite brand interfaces..."
+                ]'></span>
+            </div>
+
+            <div class="svc-stack-line">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>TailwindCSS</span>
+                <span>Python</span>
+                <span>Django</span>
+                <span>MySQL</span>
+                <span>Linux</span>
+                <span>VPS</span>
+                <span>OWASP Top 10</span>
+                <span>SANS 504</span>
+            </div>
+        </div>
+
+        <!-- آمارهای کلیدی -->
+        <div class="svc-stats reveal-block">
+            <div class="svc-stat">
+                <strong>Forged</strong>
+                <span>Custom Core</span>
+            </div>
+            <div class="svc-stat">
+                <strong>Secured</strong>
+                <span>Hardened VPS</span>
+            </div>
+            <div class="svc-stat">
+                <strong>Audited</strong>
+                <span>OWASP / PenTest</span>
+            </div>
+            <div class="svc-stat">
+                <strong>Delivered</strong>
+                <span>Scalable Design</span>
+            </div>
+        </div>
+
+        <!-- کارت‌های خدمات چهارگانه -->
+        <div class="svc-services-grid">
+
+            <!-- سرویس اول: هفائستوس (جنگو) -->
+            <article class="svc-card svc-card-primary reveal-card" data-god="HEPHAESTUS">
+                <div class="svc-card-orb"></div>
+                <div class="svc-card-top">
+                    <div class="svc-icon"><span>01</span></div>
+                    <div>
+                        <p class="svc-card-kicker">ENGINE #01 // HEPHAESTUS</p>
+                        <h2>توسعه فول‌استک و فروشگاه‌های اختصاصی Django</h2>
+                    </div>
+                </div>
+                <p class="svc-card-text">
+                    طراحی و توسعه سیستم‌های تحت‌وب توزیع‌شده و پلتفرم‌های چندفروشگاهی مقیاس‌پذیر با معماری قدرتمند جنگو. پیاده‌سازی مکانیزم‌های امنیتی در لایه کدهای Backend، مدیریت بهینه دیتابیس‌های رابطه‌ای، احراز هویت OTP و یکپارچه‌سازی درگاه‌های پرداخت پایدار.
+                </p>
+                <div class="svc-price-tag">شروع قیمت از ۱۹۹,۰۰۰,۰۰۰ تومان (چندفروشگاهی از ۱۱۵,۰۰۰,۰۰۰ تومان)</div>
+                <ul class="svc-feature-list">
+                    <li>توسعه اختصاصی با معماری ماژولار Python/Django</li>
+                    <li>طراحی دیتابیس‌های رابطه‌ای پیچیده، امن و بهینه‌سازی شده (MySQL/PostgreSQL)</li>
+                    <li>احراز هویت پیشرفته دو مرحله‌ای (OTP) و نشست‌های رمزنگاری شده</li>
+                    <li>اتصال امن به درگاه‌های بانکی، سامانه‌های تورب، ایمالز، باسلام و دیجی‌کالا</li>
+                </ul>
+                <div class="svc-terminal">
+                    <span class="terminal-prompt">sephiroot@hephaestus:~$</span>
+                    <span class="terminal-command">python manage.py runserver --security=strict</span>
+                </div>
+            </article>
+
+            <!-- سرویس دوم: پوزئیدون (سخت‌سازی) -->
+            <article class="svc-card svc-card-cyan reveal-card" data-god="POSEIDON">
+                <div class="svc-card-orb"></div>
+                <div class="svc-card-top">
+                    <div class="svc-icon"><span>02</span></div>
+                    <div>
+                        <p class="svc-card-kicker">ENGINE #02 // POSEIDON</p>
+                        <h2>استقرار امن، مدیریت ترافیک و سخت‌سازی سرور (Hardening)</h2>
+                    </div>
+                </div>
+                <p class="svc-card-text">
+                    کاهش حداکثری سطح حملات زیرساختی با اعمال متدهای اصولی سخت‌سازی سیستم‌عامل لینوکس. پیکربندی بهینه وب‌سرورها، ایجاد لایه‌های Reverse Proxy مستحکم، اعمال تنظیمات پیشرفته CDN و راه‌اندازی گواهینامه‌های SSL چندلایه‌ برای محیط‌های پایدار Production.
+                </p>
+                <div class="svc-price-tag">سخت‌سازی و مانیتورینگ: ۱۵,۰۰۰,۰۰۰ تا ۳۰,۰۰۰,۰۰۰ تومان</div>
+                <ul class="svc-feature-list">
+                    <li>دیپلوی تخصصی و سخت‌سازی همه‌جانبه Linux VPS (Debian/Ubuntu/CentOS)</li>
+                    <li>کاهش و مهار سطح دسترسی‌ها و غیرفعال‌سازی سرویس‌های غیرضروری</li>
+                    <li>راه‌اندازی دقیق SSL/TLS، CDNهای لایه‌بندی شده و پراکسی‌های معکوس (Nginx/HAProxy)</li>
+                    <li>آماده‌سازی تخصصی برای ورود به فاز عملیاتی تولید (Production Readiness)</li>
+                </ul>
+                <div class="svc-terminal">
+                    <span class="terminal-prompt">root@poseidon:~#</span>
+                    <span class="terminal-command">iptables -A INPUT -p tcp --dport 22 -j ACCEPT && sysctl -p</span>
+                </div>
+            </article>
+
+            <!-- سرویس سوم: آتنا (تست نفوذ) -->
+            <article class="svc-card svc-card-blue reveal-card" data-god="ATHENA">
+                <div class="svc-card-orb"></div>
+                <div class="svc-card-top">
+                    <div class="svc-icon"><span>03</span></div>
+                    <div>
+                        <p class="svc-card-kicker">ENGINE #03 // ATHENA</p>
+                        <h2>تست نفوذ وب‌اپلیکیشن (PenTest) و تحلیل لاگ‌های امنیتی</h2>
+                    </div>
+                </div>
+                <p class="svc-card-text">
+                    کشف پسیو و اکتیو آسیب‌پذیری‌های پیچیده قبل از اینکه هکرهای کلاه‌سیاه آن‌ها را بیابند. بازرسی دقیق بر اساس سرفصل‌های معتبر OWASP Top 10 و متدولوژی‌های SANS 504، شبیه‌سازی حملات واقعی، مانیتورینگ رویدادها، لاگ آنالیزینگ و مانیتورینگ تهدیدات در نقش SOC Tier 1.
+                </p>
+                <div class="svc-price-tag">ارزیابی: ۱۰-۲۰ میلیون | تست نفوذ کامل وب‌اپلیکیشن: ۳۰-۷۰ میلیون تومان</div>
+                <ul class="svc-feature-list">
+                    <li>تست نفوذ جعبه سیاه، خاکستری و سفید بر مبنای متدهای OWASP</li>
+                    <li>شناسایی باگ‌های خطرناک منطقی (Business Logic) و آسیب‌پذیری‌های وب‌اپلیکیشن</li>
+                    <li>تحلیل رفتاری لاگ‌ها، کشف لاگ‌های ناهنجار و شناسایی بردارهای حمله فعال</li>
+                    <li>تدوین گزارش‌های کاملاً مستند به همراه راهکارهای قدم‌به‌قدم رفع آسیب‌پذیری‌ها</li>
+                </ul>
+                <div class="svc-terminal">
+                    <span class="terminal-prompt">sephiroot@athena:~$</span>
+                    <span class="terminal-command">nmap -sS -sV -T4 --script vuln target.local</span>
+                </div>
+            </article>
+
+            <!-- سرویس چهارم: آپولو (کسب‌وکارها) -->
+            <article class="svc-card svc-card-purple reveal-card" data-god="APOLLO">
+                <div class="svc-card-orb"></div>
+                <div class="svc-card-top">
+                    <div class="svc-icon"><span>04</span></div>
+                    <div>
+                        <p class="svc-card-kicker">ENGINE #04 // APOLLO</p>
+                        <h2>سامانه‌های تحت‌وب شرکتی، استارتاپی و پورتفولیوهای تعاملی</h2>
+                    </div>
+                </div>
+                <p class="svc-card-text">
+                    خلق هویت‌های بصری یونیک با تکیه بر تجربه کاربری (UX) بهینه و کدهای توسعه‌پذیر. برای سازمان‌ها و برندهایی که می‌خواهند از قالب‌های آماده و کدهای سنگین عبور کرده و یک ساختار با بازدهی بالا و کاملاً سفارشی بر اساس نیازهای واقعی‌شان تحویل بگیرند.
+                </p>
+                <div class="svc-price-tag">نسخه‌های دوزبانه: ۵۰%+ | زبان اضافه: ۳۰%+ | راست‌چین کردن قالب‌ها: ۲۵%+</div>
+                <ul class="svc-feature-list">
+                    <li>طراحی رابط‌های کاربری چشم‌نواز سایبرپانک، مینیمال و اساطیری اختصاصی</li>
+                    <li>توسعه سیستم‌های بدون وابستگی به فریم‌ورک‌های سنگین با سرعت بارگذاری زیر ۱ ثانیه</li>
+                    <li>سازگاری کامل با فرآیندهای سئو و ساختار بهینه موتورهای جستجو</li>
+                    <li>معماری فرانت‌اند تمیز و واکنش‌گرا هماهنگ با استانداردهای مدرن فرانت</li>
+                </ul>
+                <div class="svc-terminal">
+                    <span class="terminal-prompt">sephiroot@apollo:~$</span>
+                    <span class="terminal-command">init --ux-concept --cyberpunk-aesthetics --minify-assets</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- مسیر اجرای کار (Chronos) -->
+        <div class="svc-workflow reveal-block">
+            <div class="svc-section-head">
+                <p>CHRONOS_SEQUENCE</p>
+                <h2>فرآیند مهندسی و اجرای پروژه</h2>
+            </div>
+
+            <div class="svc-pipeline">
+                <div class="pipeline-step">
+                    <span>DISCOVER</span>
+                    <strong>آنالیز عمیق نیازمندی‌ها و تخمین ریسک</strong>
+                </div>
+                <div class="pipeline-line"></div>
+                <div class="pipeline-step">
+                    <span>ARCHITECT</span>
+                    <strong>مدل‌سازی دیتابیس و ترسیم مرزهای امنیتی</strong>
+                </div>
+                <div class="pipeline-line"></div>
+                <div class="pipeline-step">
+                    <span>BUILD</span>
+                    <strong>توسعه تمیز بک‌اند و فرانت‌اند و مانیتور لاگ‌ها</strong>
+                </div>
+                <div class="pipeline-line"></div>
+                <div class="pipeline-step">
+                    <span>SECURE + DEPLOY</span>
+                    <strong>سخت‌سازی سرور، استقرار نهایی و تست نفوذ نهایی</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- فراخوان همکاری (CTA) -->
+        <div class="svc-cta reveal-block">
+            <div>
+                <p class="svc-cta-label">AEGIS_ACTIVE_ALERT</p>
+                <h2>پروژه خود را بر پایه کدهای مهندسی‌شده و زیرساخت نفوذناپذیر بسازید.</h2>
+            </div>
+            <a href="/contact/" class="svc-cta-btn">
+                شروع همکاری با Sephiroot
+                <span>↗</span>
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

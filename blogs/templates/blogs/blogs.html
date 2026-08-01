@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}بلاگ ها{% endblock %}
+{% block namespace %}blog{% endblock %}
+{% block content %}
+
+
+
+    <div class="cm-content-box mode">
+        <div class="cm-content-item cm-page-template">
+            <div class="cm-content-item__top">
+                <div class="top-right-bg"></div>
+                <div class="cm-content-sub">
+                    <div class="icon">
+                        <img class="svg" src="{% static 'assets/img/icons/blog.svg' %}" alt="blog">
+                    </div>
+                    <p>خبرها و بلاگ</p>
+                </div>
+                <h1 class="main-title">
+                    با جیکوب مارتین <br>
+                    بهترین خبرها<span> و </span> بلاگ
+                    <u>
+                        <img src="{% static 'assets/img/content/line.svg' %}" alt="">
+                    </u>
+                </h1>
+            </div>
+            <!-- blog content -->
+            <div class="cm-blogs">
+                <div class="cm-blog-area">
+                    <!-- single blog item -->
+                    <div class="single-blog-item">
+                        <a href="" class="single-blog-item__single">
+                            <img src="{% static 'assets/img/blog/01.jpg' %}" alt="blog">
+                        </a>
+                        <div class="blog__meta">
+                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> رسول </a></span>
+                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 9 اردیبهشت 1403 4</span>
+                        </div>
+                        <h4 class="blog-title">
+                            <a href="">تطبیق رزومه خود را برای فرصت های شغلی مختلف</a>
+                        </h4>
+                    </div>
+                    <!-- single blog item end -->
+                    <!-- single blog item -->
+                    <div class="single-blog-item">
+                        <a href="" class="single-blog-item__single">
+                            <img src="{% static 'assets/img/blog/02.jpg' %}" alt="blog">
+                        </a>
+                        <div class="blog__meta">
+                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> توما</a></span>
+                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 5 اردیبهشت 1403 </span>
+                        </div>
+                        <h4 class="blog-title">
+                            <a href="">اصلاح رزومه متناسب با چشم انداز اشتغال</a>
+                        </h4>
+                    </div>
+                    <!-- single blog item end -->
+                    <!-- single blog item -->
+                    <div class="single-blog-item">
+                        <a href="" class="single-blog-item__single">
+                            <img src="{% static 'assets/img/blog/03.jpg' %}" alt="blog">
+                        </a>
+                        <div class="blog__meta">
+                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> شکیب </a></span>
+                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 9 اردیبهشت 1403 4</span>
+                        </div>
+                        <h4 class="blog-title">
+                            <a href="">سفارشی کردن رزومه خود برای نقشهای شغلی متنوع</a>
+                        </h4>
+                    </div>
+                    <!-- single blog item end -->
+                    <!-- single blog item -->
+                    <div class="single-blog-item">
+                        <a href="" class="single-blog-item__single">
+                            <img src="{% static 'assets/img/blog/04.jpg' %}" alt="blog">
+                        </a>
+                        <div class="blog__meta">
+                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> معصومه </a></span>
+                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 10 اردیبهشت 1403 </span>
+                        </div>
+                        <h4 class="blog-title">
+                            <a href="">پیمایش در بازار کار: نکاتی برای افراد متقاضی کار</a>
+                        </h4>
+                    </div>
+                    <!-- single blog item end -->
+                </div>
+                <!-- pagination -->
+                <div class="cm-site-pagination">
+                    <nav aria-label="pagination-area">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" tabindex="0">01</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">02</a></li>
+                            <li class="page-item"><a class="page-link" href="#">03</a></li>
+                            <li class="page-item"><a class="page-link" href="#">04</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- blog content end -->
+        </div>
+    </div>
+
+
+{% endblock %}

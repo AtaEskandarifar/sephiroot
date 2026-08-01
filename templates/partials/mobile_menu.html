@@ -1,0 +1,28 @@
+{% load static %}
+<div class="cm-mobile-menu">
+    <div class="cm-header-menu mode">
+        <div class="menu-left">
+            <div class="logo-area">
+                <a href="{% url 'home:home' %}"><img class="light" src="{% static 'assets/img/logo/ae_transparent_no_bg.png' %}" alt="axz" style="width:10rem;height:auto;" fetchpriority="high" decoding="async"></a>
+                <a href="{% url 'home:home' %}"><img class="dark" src="{% static 'assets/img/logo/ae_transparent_no_bg.png' %}" alt="axz" style="width:10rem;height:auto;" fetchpriority="high" decoding="async"></a>
+            </div>
+            <div class="header-menu">
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home:home' %}">خانه</a></li>
+                    <li><a href="{% url 'contacts:contacts' %}" class="hire">استخدام من!</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cm-functionality cm-right">
+            <div class="setting" >
+                <div class="mode-switcher mode-mobile" id="theme-mode-2">
+                    <img class="light svg" src="{% static 'assets/img/icons/moon.svg' %}" alt="" fetchpriority="high" decoding="async">
+                    <img class="dark svg" src="{% static 'assets/img/icons/sun.svg' %}" alt="" fetchpriority="high" decoding="async">
+                </div>
+            </div>
+            <div class="offcanvase">
+                <img src="{% static 'assets/img/icons/bars.svg' %}" alt="menu-bar" class="svg" fetchpriority="high" decoding="async">
+            </div>
+        </div>
+    </div>
+</div>
