@@ -1,106 +1,324 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-{% block title %}بلاگ ها{% endblock %}
+
+{% block title %}بایگانی دانش | Sephiroot{% endblock %}
 {% block namespace %}blog{% endblock %}
+
 {% block content %}
 
+    <main class="seph-blog-page">
 
-
-    <div class="cm-content-box mode">
-        <div class="cm-content-item cm-page-template">
-            <div class="cm-content-item__top">
-                <div class="top-right-bg"></div>
-                <div class="cm-content-sub">
-                    <div class="icon">
-                        <img class="svg" src="{% static 'assets/img/icons/blog.svg' %}" alt="blog">
-                    </div>
-                    <p>خبرها و بلاگ</p>
-                </div>
-                <h1 class="main-title">
-                    با جیکوب مارتین <br>
-                    بهترین خبرها<span> و </span> بلاگ
-                    <u>
-                        <img src="{% static 'assets/img/content/line.svg' %}" alt="">
-                    </u>
-                </h1>
-            </div>
-            <!-- blog content -->
-            <div class="cm-blogs">
-                <div class="cm-blog-area">
-                    <!-- single blog item -->
-                    <div class="single-blog-item">
-                        <a href="" class="single-blog-item__single">
-                            <img src="{% static 'assets/img/blog/01.jpg' %}" alt="blog">
-                        </a>
-                        <div class="blog__meta">
-                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> رسول </a></span>
-                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 9 اردیبهشت 1403 4</span>
-                        </div>
-                        <h4 class="blog-title">
-                            <a href="">تطبیق رزومه خود را برای فرصت های شغلی مختلف</a>
-                        </h4>
-                    </div>
-                    <!-- single blog item end -->
-                    <!-- single blog item -->
-                    <div class="single-blog-item">
-                        <a href="" class="single-blog-item__single">
-                            <img src="{% static 'assets/img/blog/02.jpg' %}" alt="blog">
-                        </a>
-                        <div class="blog__meta">
-                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> توما</a></span>
-                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 5 اردیبهشت 1403 </span>
-                        </div>
-                        <h4 class="blog-title">
-                            <a href="">اصلاح رزومه متناسب با چشم انداز اشتغال</a>
-                        </h4>
-                    </div>
-                    <!-- single blog item end -->
-                    <!-- single blog item -->
-                    <div class="single-blog-item">
-                        <a href="" class="single-blog-item__single">
-                            <img src="{% static 'assets/img/blog/03.jpg' %}" alt="blog">
-                        </a>
-                        <div class="blog__meta">
-                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> شکیب </a></span>
-                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 9 اردیبهشت 1403 4</span>
-                        </div>
-                        <h4 class="blog-title">
-                            <a href="">سفارشی کردن رزومه خود برای نقشهای شغلی متنوع</a>
-                        </h4>
-                    </div>
-                    <!-- single blog item end -->
-                    <!-- single blog item -->
-                    <div class="single-blog-item">
-                        <a href="" class="single-blog-item__single">
-                            <img src="{% static 'assets/img/blog/04.jpg' %}" alt="blog">
-                        </a>
-                        <div class="blog__meta">
-                            <span class="author"><a href="#"><img src="{% static 'assets/img/icons/user.svg' %}" alt="user"> معصومه </a></span>
-                            <span class="date"><img src="{% static 'assets/img/icons/calendar.svg' %}" alt="calendar"> 10 اردیبهشت 1403 </span>
-                        </div>
-                        <h4 class="blog-title">
-                            <a href="">پیمایش در بازار کار: نکاتی برای افراد متقاضی کار</a>
-                        </h4>
-                    </div>
-                    <!-- single blog item end -->
-                </div>
-                <!-- pagination -->
-                <div class="cm-site-pagination">
-                    <nav aria-label="pagination-area">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" tabindex="0">01</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">02</a></li>
-                            <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            <li class="page-item"><a class="page-link" href="#">04</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- blog content end -->
+        <!-- Decorative background -->
+        <div class="seph-blog-bg" aria-hidden="true">
+            <span class="rune rune-one">ᛉ</span>
+            <span class="rune rune-two">ᚱ</span>
+            <span class="rune rune-three">⟁</span>
+            <span class="rune rune-four">✦</span>
+            <div class="grid-overlay"></div>
+            <div class="scanline"></div>
         </div>
-    </div>
 
+        <!-- Hero section -->
+        <section class="seph-blog-hero">
+
+            <div class="hero-orb hero-orb-one" data-depth="0.14"></div>
+            <div class="hero-orb hero-orb-two" data-depth="-0.1"></div>
+
+            <div class="seph-container hero-container">
+
+                <div class="hero-content">
+                    <div class="blog-eyebrow">
+                    <span class="eyebrow-icon">
+                        <img
+                                src="{% static 'assets/img/icons/blog.svg' %}"
+                                alt=""
+                        >
+                    </span>
+
+                        <span class="eyebrow-line"></span>
+
+                        <span>SEPHIROOT // KNOWLEDGE ARCHIVE</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        رمزگشایی از
+                        <span>سایه‌های دیجیتال</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        یادداشت‌هایی درباره امنیت وب، توسعه Django،
+                        شکار باگ، مهندسی نرم‌افزار و دنیای ناشناخته‌ی تهدیدهای سایبری.
+                    </p>
+
+                    <div class="terminal-line" aria-hidden="true">
+                        <span class="terminal-user">sephiroth@root</span>
+                        <span class="terminal-separator">:</span>
+                        <span class="terminal-path">~/knowledge</span>
+                        <span class="terminal-symbol">$</span>
+                        <span class="terminal-command">decrypt --latest-articles</span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+
+                <div class="hero-symbol" data-depth="0.2" aria-hidden="true">
+                    <span class="symbol-ring symbol-ring-one"></span>
+                    <span class="symbol-ring symbol-ring-two"></span>
+                    <span class="symbol-core">☿</span>
+                    <span class="symbol-label">ARCANA<br>CODEX</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Blog archive -->
+        <section class="seph-blog-archive">
+            <div class="seph-container">
+
+                <div class="archive-heading">
+                    <div>
+                        <span class="section-label">ENCRYPTED RECORDS</span>
+                        <h2>آخرین نوشته‌ها</h2>
+                    </div>
+
+                    <div class="archive-status">
+                        <span class="status-dot"></span>
+                        <span>ARCHIVE ONLINE</span>
+                    </div>
+                </div>
+
+                <!-- Six blog cards -->
+                <div class="blog-grid">
+
+                    <!-- Card 01 -->
+                    <article class="blog-card" data-tilt-card>
+                        <a href="#" class="blog-card-image">
+                            <img
+                                    src="{% static 'assets/img/blog/01.jpg' %}"
+                                    alt="امنیت وب و تست نفوذ"
+                            >
+
+                            <span class="card-number">01</span>
+                            <span class="card-category">WEB SECURITY</span>
+                        </a>
+
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span>ATA ESK</span>
+                                <time datetime="2026-08-01">01.08.2026</time>
+                            </div>
+
+                            <h3>
+                                <a href="#">
+                                    مسیر شکار باگ؛ از Recon تا گزارش حرفه‌ای
+                                </a>
+                            </h3>
+
+                            <p>
+                                نگاهی عملی به فرایند شناسایی سطح حمله،
+                                اولویت‌بندی اهداف و ساخت گزارش قابل اعتماد.
+                            </p>
+
+                            <a href="#" class="read-more">
+                                ورود به پرونده
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 02 -->
+                    <article class="blog-card" data-tilt-card>
+                        <a href="#" class="blog-card-image">
+                            <img
+                                    src="{% static 'assets/img/blog/02.jpg' %}"
+                                    alt="امنیت Django"
+                            >
+
+                            <span class="card-number">02</span>
+                            <span class="card-category">DJANGO</span>
+                        </a>
+
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span>ATA ESK</span>
+                                <time datetime="2026-07-28">28.07.2026</time>
+                            </div>
+
+                            <h3>
+                                <a href="#">
+                                    سخت‌سازی فرم‌های Django در برابر حملات رایج
+                                </a>
+                            </h3>
+
+                            <p>
+                                بررسی CSRF، XSS، اعتبارسنجی سمت سرور و طراحی
+                                endpointهایی که داده‌های حساس را افشا نمی‌کنند.
+                            </p>
+
+                            <a href="#" class="read-more">
+                                ورود به پرونده
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 03 -->
+                    <article class="blog-card" data-tilt-card>
+                        <a href="#" class="blog-card-image">
+                            <img
+                                    src="{% static 'assets/img/blog/03.jpg' %}"
+                                    alt="OWASP Top 10"
+                            >
+
+                            <span class="card-number">03</span>
+                            <span class="card-category">OWASP</span>
+                        </a>
+
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span>ATA ESK</span>
+                                <time datetime="2026-07-22">22.07.2026</time>
+                            </div>
+
+                            <h3>
+                                <a href="#">
+                                    IDOR چیست و چگونه آن را در معماری وب پیدا کنیم؟
+                                </a>
+                            </h3>
+
+                            <p>
+                                تفاوت بین احراز هویت و مجوزدهی و روش تحلیل
+                                دسترسی‌های شکسته در اپلیکیشن‌های وب.
+                            </p>
+
+                            <a href="#" class="read-more">
+                                ورود به پرونده
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 04 -->
+                    <article class="blog-card" data-tilt-card>
+                        <a href="#" class="blog-card-image">
+                            <img
+                                    src="{% static 'assets/img/blog/04.jpg' %}"
+                                    alt="Python automation"
+                            >
+
+                            <span class="card-number">04</span>
+                            <span class="card-category">AUTOMATION</span>
+                        </a>
+
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span>ATA ESK</span>
+                                <time datetime="2026-07-16">16.07.2026</time>
+                            </div>
+
+                            <h3>
+                                <a href="#">
+                                    اتوماسیون Recon با Python و ابزارهای امنیتی
+                                </a>
+                            </h3>
+
+                            <p>
+                                چگونه ابزارهای کوچک و دقیق برای جمع‌آوری اطلاعات،
+                                بررسی سرویس‌ها و تحلیل نتایج بسازیم.
+                            </p>
+
+                            <a href="#" class="read-more">
+                                ورود به پرونده
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 05 -->
+                    <article class="blog-card" data-tilt-card>
+                        <a href="#" class="blog-card-image">
+                            <img
+                                    src="{% static 'assets/img/blog/01.jpg' %}"
+                                    alt="SOC monitoring"
+                            >
+
+                            <span class="card-number">05</span>
+                            <span class="card-category">SOC / SIEM</span>
+                        </a>
+
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span>ATA ESK</span>
+                                <time datetime="2026-07-10">10.07.2026</time>
+                            </div>
+
+                            <h3>
+                                <a href="#">
+                                    اولین گام‌ها برای ساخت آزمایشگاه SOC شخصی
+                                </a>
+                            </h3>
+
+                            <p>
+                                طراحی یک محیط تمرینی با Splunk، ماشین‌های مجازی،
+                                لاگ‌ها و سناریوهای ساده‌ی تشخیص تهدید.
+                            </p>
+
+                            <a href="#" class="read-more">
+                                ورود به پرونده
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 06 -->
+                    <article class="blog-card" data-tilt-card>
+                        <a href="#" class="blog-card-image">
+                            <img
+                                    src="{% static 'assets/img/blog/02.jpg' %}"
+                                    alt="Unicode security"
+                            >
+
+                            <span class="card-number">06</span>
+                            <span class="card-category">DEEP DIVE</span>
+                        </a>
+
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span>ATA ESK</span>
+                                <time datetime="2026-07-03">03.07.2026</time>
+                            </div>
+
+                            <h3>
+                                <a href="#">
+                                    وقتی Unicode به سلاح تبدیل می‌شود
+                                </a>
+                            </h3>
+
+                            <p>
+                                بررسی encoding، کاراکترهای نامرئی و خطاهای رایج
+                                در پردازش ورودی‌های چندزبانه.
+                            </p>
+
+                            <a href="#" class="read-more">
+                                ورود به پرونده
+                                <span>←</span>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Temporary static pagination -->
+                <nav class="blog-pagination" aria-label="صفحه‌بندی بلاگ">
+                    <a href="#" class="pagination-arrow" aria-label="صفحه قبلی">→</a>
+                    <a href="#" class="active">01</a>
+                    <a href="#">02</a>
+                    <a href="#">03</a>
+                    <a href="#" class="pagination-arrow" aria-label="صفحه بعدی">←</a>
+                </nav>
+
+            </div>
+        </section>
+
+    </main>
 
 {% endblock %}
