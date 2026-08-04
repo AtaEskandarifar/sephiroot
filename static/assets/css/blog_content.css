@@ -1,0 +1,44 @@
+/* Scope: only affects editor output */
+.ck-content{
+  direction: rtl;
+  text-align: right;
+  line-height: 1.9;
+  font-size: 1.05rem;
+}
+
+/* Headings spacing */
+.ck-content h1,.ck-content h2,.ck-content h3,.ck-content h4,.ck-content h5,.ck-content h6{
+  margin: 1.2em 0 .6em;
+  font-weight: 800;
+}
+
+/* Paragraph spacing */
+.ck-content p{ margin: 0 0 1rem; }
+
+/* Images produced by CKEditor 5 */
+.ck-content figure.image{
+  margin: 1.2rem auto;
+  text-align: center;
+}
+.ck-content figure.image img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Alignment classes (CKEditor uses these) */
+.ck-content figure.image.image-style-align-left{ float: left; margin: .5rem 1.2rem .8rem 0; }
+.ck-content figure.image.image-style-align-right{ float: right; margin: .5rem 0 .8rem 1.2rem; }
+
+/* Lists */
+.ck-content ul,.ck-content ol{ padding-right: 1.5rem; margin: 0 0 1rem; }
+.ck-content li{ margin-bottom: .4rem; }
+
+/* Blockquote */
+.ck-content blockquote{
+  border-right: 4px solid #3b82f6;
+  padding: .6rem 1rem;
+  margin: 1rem 0;
+  background: rgba(0,0,0,.04);
+}

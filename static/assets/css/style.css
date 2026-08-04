@@ -4553,7 +4553,7 @@ blockquote+p {
 }
 
 .cm-author-image>img {
-  border-radius: 10px;
+  border-radius: 1000px;
   width: 100%;
 }
 

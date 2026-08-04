@@ -88,237 +88,118 @@
 
                 <!-- Six blog cards -->
                 <div class="blog-grid">
+                    {% for post in posts %}
+                        <article class="blog-card" data-tilt-card>
 
-                    <!-- Card 01 -->
-                    <article class="blog-card" data-tilt-card>
-                        <a href="#" class="blog-card-image">
-                            <img
-                                    src="{% static 'assets/img/blog/01.jpg' %}"
-                                    alt="امنیت وب و تست نفوذ"
-                            >
+                            <a href="{{ post.get_absolute_url }}" class="blog-card-image">
+                                {% if post.featured_image %}
+                                    <img src="{{ post.featured_image.url }}" alt="{{ post.seo_title|default:post.title }}">
+                                {% else %}
+                                    <img src="{% static 'assets/img/blog/placeholder.jpg' %}" alt="{{ post.title }}">
+                                {% endif %}
 
-                            <span class="card-number">01</span>
-                            <span class="card-category">WEB SECURITY</span>
-                        </a>
+                                <span class="card-number">
+                                    {{ forloop.counter|stringformat:"02d" }}
+                                </span>
 
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span>ATA ESK</span>
-                                <time datetime="2026-08-01">01.08.2026</time>
+                                {% if post.category %}
+                                    <span class="card-category">
+                                        {{ post.category.name|upper }}
+                                    </span>
+                                {% else %}
+                                    <span class="card-category">UNCATEGORIZED</span>
+                                {% endif %}
+                            </a>
+                                <div class="blog-card-content">
+                                    <div class="blog-meta">
+                                        <span>
+                                            {% if post.author %}
+                                                {{ post.author.get_full_name|default:post.author.username|upper }}
+                                            {% else %}
+                                                SEPHIROOT
+                                            {% endif %}
+                                        </span>
+
+                                    {% if post.published_at %}
+                                        <time datetime="{{ post.published_at|date:'Y-m-d' }}">
+                                            {{ post.published_at|date:"d.m.Y" }}
+                                        </time>
+                                    {% else %}
+                                        <time datetime="{{ post.created_at|date:'Y-m-d' }}">
+                                            {{ post.created_at|date:"d.m.Y" }}
+                                        </time>
+                                    {% endif %}
+                                </div>
+
+                                <h3>
+                                    <a href="{{ post.get_absolute_url }}">
+                                        {{ post.title }}
+                                    </a>
+                                </h3>
+
+                                <p>
+                                    {% if post.excerpt %}
+                                        {{ post.excerpt }}
+                                    {% else %}
+                                        {{ post.content|striptags|truncatewords:26 }}
+                                    {% endif %}
+                                </p>
+
+                                <a href="{{ post.get_absolute_url }}" class="read-more">
+                                    ورود به پرونده
+                                    <span>←</span>
+                                </a>
                             </div>
 
-                            <h3>
-                                <a href="#">
-                                    مسیر شکار باگ؛ از Recon تا گزارش حرفه‌ای
-                                </a>
-                            </h3>
+                        </article>
 
-                            <p>
-                                نگاهی عملی به فرایند شناسایی سطح حمله،
-                                اولویت‌بندی اهداف و ساخت گزارش قابل اعتماد.
-                            </p>
-
-                            <a href="#" class="read-more">
-                                ورود به پرونده
-                                <span>←</span>
-                            </a>
+                    {% empty %}
+                        <div class="no-posts-message">
+                            <p>هنوز هیچ نوشته‌ای در بایگانی دانش ثبت نشده است.</p>
+                            <p>لطفاً بعداً دوباره سر بزنید.</p>
                         </div>
-                    </article>
-
-                    <!-- Card 02 -->
-                    <article class="blog-card" data-tilt-card>
-                        <a href="#" class="blog-card-image">
-                            <img
-                                    src="{% static 'assets/img/blog/02.jpg' %}"
-                                    alt="امنیت Django"
-                            >
-
-                            <span class="card-number">02</span>
-                            <span class="card-category">DJANGO</span>
-                        </a>
-
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span>ATA ESK</span>
-                                <time datetime="2026-07-28">28.07.2026</time>
-                            </div>
-
-                            <h3>
-                                <a href="#">
-                                    سخت‌سازی فرم‌های Django در برابر حملات رایج
-                                </a>
-                            </h3>
-
-                            <p>
-                                بررسی CSRF، XSS، اعتبارسنجی سمت سرور و طراحی
-                                endpointهایی که داده‌های حساس را افشا نمی‌کنند.
-                            </p>
-
-                            <a href="#" class="read-more">
-                                ورود به پرونده
-                                <span>←</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Card 03 -->
-                    <article class="blog-card" data-tilt-card>
-                        <a href="#" class="blog-card-image">
-                            <img
-                                    src="{% static 'assets/img/blog/03.jpg' %}"
-                                    alt="OWASP Top 10"
-                            >
-
-                            <span class="card-number">03</span>
-                            <span class="card-category">OWASP</span>
-                        </a>
-
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span>ATA ESK</span>
-                                <time datetime="2026-07-22">22.07.2026</time>
-                            </div>
-
-                            <h3>
-                                <a href="#">
-                                    IDOR چیست و چگونه آن را در معماری وب پیدا کنیم؟
-                                </a>
-                            </h3>
-
-                            <p>
-                                تفاوت بین احراز هویت و مجوزدهی و روش تحلیل
-                                دسترسی‌های شکسته در اپلیکیشن‌های وب.
-                            </p>
-
-                            <a href="#" class="read-more">
-                                ورود به پرونده
-                                <span>←</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Card 04 -->
-                    <article class="blog-card" data-tilt-card>
-                        <a href="#" class="blog-card-image">
-                            <img
-                                    src="{% static 'assets/img/blog/04.jpg' %}"
-                                    alt="Python automation"
-                            >
-
-                            <span class="card-number">04</span>
-                            <span class="card-category">AUTOMATION</span>
-                        </a>
-
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span>ATA ESK</span>
-                                <time datetime="2026-07-16">16.07.2026</time>
-                            </div>
-
-                            <h3>
-                                <a href="#">
-                                    اتوماسیون Recon با Python و ابزارهای امنیتی
-                                </a>
-                            </h3>
-
-                            <p>
-                                چگونه ابزارهای کوچک و دقیق برای جمع‌آوری اطلاعات،
-                                بررسی سرویس‌ها و تحلیل نتایج بسازیم.
-                            </p>
-
-                            <a href="#" class="read-more">
-                                ورود به پرونده
-                                <span>←</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Card 05 -->
-                    <article class="blog-card" data-tilt-card>
-                        <a href="#" class="blog-card-image">
-                            <img
-                                    src="{% static 'assets/img/blog/01.jpg' %}"
-                                    alt="SOC monitoring"
-                            >
-
-                            <span class="card-number">05</span>
-                            <span class="card-category">SOC / SIEM</span>
-                        </a>
-
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span>ATA ESK</span>
-                                <time datetime="2026-07-10">10.07.2026</time>
-                            </div>
-
-                            <h3>
-                                <a href="#">
-                                    اولین گام‌ها برای ساخت آزمایشگاه SOC شخصی
-                                </a>
-                            </h3>
-
-                            <p>
-                                طراحی یک محیط تمرینی با Splunk، ماشین‌های مجازی،
-                                لاگ‌ها و سناریوهای ساده‌ی تشخیص تهدید.
-                            </p>
-
-                            <a href="#" class="read-more">
-                                ورود به پرونده
-                                <span>←</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Card 06 -->
-                    <article class="blog-card" data-tilt-card>
-                        <a href="#" class="blog-card-image">
-                            <img
-                                    src="{% static 'assets/img/blog/02.jpg' %}"
-                                    alt="Unicode security"
-                            >
-
-                            <span class="card-number">06</span>
-                            <span class="card-category">DEEP DIVE</span>
-                        </a>
-
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span>ATA ESK</span>
-                                <time datetime="2026-07-03">03.07.2026</time>
-                            </div>
-
-                            <h3>
-                                <a href="#">
-                                    وقتی Unicode به سلاح تبدیل می‌شود
-                                </a>
-                            </h3>
-
-                            <p>
-                                بررسی encoding، کاراکترهای نامرئی و خطاهای رایج
-                                در پردازش ورودی‌های چندزبانه.
-                            </p>
-
-                            <a href="#" class="read-more">
-                                ورود به پرونده
-                                <span>←</span>
-                            </a>
-                        </div>
-                    </article>
-
+                    {% endfor %}
                 </div>
 
                 <!-- Temporary static pagination -->
-                <nav class="blog-pagination" aria-label="صفحه‌بندی بلاگ">
-                    <a href="#" class="pagination-arrow" aria-label="صفحه قبلی">→</a>
-                    <a href="#" class="active">01</a>
-                    <a href="#">02</a>
-                    <a href="#">03</a>
-                    <a href="#" class="pagination-arrow" aria-label="صفحه بعدی">←</a>
-                </nav>
+                {% if is_paginated %}
+                    <nav class="blog-pagination" aria-label="صفحه‌بندی بلاگ">
 
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}" class="pagination-arrow" aria-label="صفحه قبلی">
+                                →
+                            </a>
+                        {% else %}
+                            <span class="pagination-arrow disabled" aria-disabled="true">
+                                →
+                            </span>
+                        {% endif %}
+
+                        {% for page_number in paginator.page_range %}
+                            {% if page_number == page_obj.number %}
+                                <a href="?page={{ page_number }}" class="active" aria-current="page">
+                                    {{ page_number|stringformat:"02d" }}
+                                </a>
+                            {% else %}
+                                <a href="?page={{ page_number }}">
+                                    {{ page_number|stringformat:"02d" }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" class="pagination-arrow" aria-label="صفحه بعدی">
+                                ←
+                            </a>
+                        {% else %}
+                            <span class="pagination-arrow disabled" aria-disabled="true">
+                                ←
+                            </span>
+                        {% endif %}
+                    </nav>
+                {% endif %}
             </div>
         </section>
-
     </main>
 
 {% endblock %}

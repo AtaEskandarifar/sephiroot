@@ -6,11 +6,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Sephiroot | توسعه‌دهنده پایتون، Django و امنیت وب{% endblock %}</title>
+    <meta name="description"
+          content="{% block meta_description %}Sephiroot؛ وب‌سایت شخصی عطااسکندری‌فر، توسعه‌دهنده Python و Django، علاقه‌مند به امنیت وب، تست نفوذ و مانیتورینگ SOC.{% endblock %}">
+
+    {# گوگل اهمیت کمی برای keywords قائل است؛ فقط اختیاری نگهش می‌داریم. #}
+    <meta name="keywords"
+          content="{% block meta_keywords %}Python, Django, امنیت وب, تست نفوذ, پنتست, توسعه وب, SOC, Sephiroot{% endblock %}">
+
+    <meta name="author" content="{% block meta_author %}عطااسکندری‌فر{% endblock %}">
+
+    {# برای صفحات خصوصی، جست‌وجو، پیش‌نویس و 404 باید noindex تعریف شود. #}
+    <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large{% endblock %}">
+
+    {# Canonical: جلوگیری از محتوای تکراری بین URLهای مشابه #}
+    {% block canonical %}
+        <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    {% endblock %}
+
+
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:site_name" content="Sephiroot">
+
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+
+    <meta property="og:title"
+          content="{% block og_title %}Sephiroot | توسعه‌دهنده Python، Django و امنیت وب{% endblock %}">
+
+    <meta property="og:description"
+          content="{% block og_description %}وب‌سایت شخصی و یادداشت‌های فنی آتا اسکندری‌فر درباره توسعه نرم‌افزار، Django، امنیت وب و SOC.{% endblock %}">
+
+    <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
+
+    {# باید یک تصویر واقعی، عمومی و با URL کامل باشد. ابعاد پیشنهادی: 1200×630 #}
+    <meta property="og:image"
+          content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'assets/img/seo/sephiroot-og-default.jpg' %}{% endblock %}">
+
+    <meta property="og:image:width" content="{% block og_image_width %}1200{% endblock %}">
+    <meta property="og:image:height" content="{% block og_image_height %}630{% endblock %}">
+    <meta property="og:image:alt"
+          content="{% block og_image_alt %}Sephiroot — توسعه نرم‌افزار و امنیت وب{% endblock %}">
+
+
+    {% block article_meta %}{% endblock %}
+
+
+
+    <link rel="icon" type="image/png"
+          href="{% static 'assets/img/logo/ae_transparent_no_bg.png' %}">
+
+    <link rel="apple-touch-icon"
+          href="{% static 'assets/img/logo/ae_transparent_no_bg.png' %}">
+
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="color-scheme" content="dark">
+
+
+    {% block structured_data %}{% endblock %}
+
+
+
     <meta name="description" content="AXZ - Template for Seamless Personal Portfolio HTML5 Template">
     <meta name="keywords" content="CV, Personal, Writer, Designer, Developer">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Creativemela">
-    <title>{% block title %}sephiroot{% endblock %}</title>
+
     <!-- favicon -->
     <link rel="icon" type="image/png" href="{% static 'assets/img/logo/ae_transparent_no_bg.png' %}">
     <!-- animate css -->
@@ -29,6 +90,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/about.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/contact.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/blog_content.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 
 
 </head>
@@ -44,9 +107,6 @@
 
     <!-- main content -->
     <div class="cm-axz-content">
-        <!-- header area -->
-{#        {% include 'partials/header.html' %}#}
-        <!-- header area end -->
 
         <!-- main content section -->
         <div class="{% block body_class %}{% endblock %}">
@@ -85,6 +145,8 @@
 <script src="{% static 'assets/js/about-lux.js' %}"></script>
 <script src="{% static 'assets/js/contact.js' %}"></script>
 <script src="{% static 'assets/js/blog.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 <script src="{% static 'assets/js/main.js' %}"></script>
 
