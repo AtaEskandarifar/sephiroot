@@ -8,6 +8,7 @@ django_compressor==4.6.0
 Markdown==3.10.3
 packaging==26.2
 pillow==12.3.0
+python-decouple==3.8
 rcssmin==1.2.2
 redis==8.1.0
 rjsmin==1.2.5
