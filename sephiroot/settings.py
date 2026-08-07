@@ -1,19 +1,33 @@
 from pathlib import Path
-
 from decouple import Csv, config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", default=False, cast=bool)
+# --------------------------------------------------
+# Core
+# --------------------------------------------------
+SECRET_KEY = config(
+    "SECRET_KEY",
+    default="django-insecure-local-dev-key-change-this"
+)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
-CSRF_TRUSTED_ORIGINS = config(
-    "CSRF_TRUSTED_ORIGINS",
-    default="",
+DEBUG = config("DEBUG", default=True, cast=bool)
+
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    default="127.0.0.1,localhost",
     cast=Csv(),
 )
 
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="http://127.0.0.1,http://localhost",
+    cast=Csv(),
+)
+
+# --------------------------------------------------
+# Applications
+# --------------------------------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -34,6 +48,9 @@ INSTALLED_APPS = [
     "compressor",
 ]
 
+# --------------------------------------------------
+# Middleware
+# --------------------------------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -46,6 +63,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "sephiroot.urls"
 
+# --------------------------------------------------
+# Templates
+# --------------------------------------------------
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -63,20 +83,38 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "sephiroot.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USER"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST", default="127.0.0.1"),
-        "PORT": config("DB_PORT", default="3306"),
-        "OPTIONS": {
-            "charset": "utf8mb4",
-        },
-    }
-}
+# --------------------------------------------------
+# Database
+# Local fallback: sqlite3
+# Production: MySQL if USE_SQLITE=False
+# --------------------------------------------------
+USE_SQLITE = config("USE_SQLITE", default=True, cast=bool)
 
+if USE_SQLITE:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": config("DB_NAME"),
+            "USER": config("DB_USER"),
+            "PASSWORD": config("DB_PASSWORD"),
+            "HOST": config("DB_HOST", default="127.0.0.1"),
+            "PORT": config("DB_PORT", default="3306"),
+            "OPTIONS": {
+                "charset": "utf8mb4",
+            },
+        }
+    }
+
+# --------------------------------------------------
+# Password validation
+# --------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -92,11 +130,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# --------------------------------------------------
+# Internationalization
+# --------------------------------------------------
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Asia/Tehran"
 USE_I18N = True
 USE_TZ = True
 
+# --------------------------------------------------
+# Static / Media
+# --------------------------------------------------
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -112,20 +156,40 @@ STATICFILES_FINDERS = [
 
 SITE_ID = 1
 
-SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_SECURE = not DEBUG
+# --------------------------------------------------
+# Security
+# --------------------------------------------------
+SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=not DEBUG, cast=bool)
+SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", default=not DEBUG, cast=bool)
+CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", default=not DEBUG, cast=bool)
 
-SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
-SECURE_HSTS_PRELOAD = not DEBUG
+SECURE_HSTS_SECONDS = config(
+    "SECURE_HSTS_SECONDS",
+    default=31536000 if not DEBUG else 0,
+    cast=int,
+)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = config(
+    "SECURE_HSTS_INCLUDE_SUBDOMAINS",
+    default=not DEBUG,
+    cast=bool,
+)
+SECURE_HSTS_PRELOAD = config(
+    "SECURE_HSTS_PRELOAD",
+    default=not DEBUG,
+    cast=bool,
+)
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 X_FRAME_OPTIONS = "DENY"
 
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# فقط وقتی پشت reverse proxy مثل Nginx هستی
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
+# --------------------------------------------------
+# CKEditor
+# --------------------------------------------------
 CKEDITOR_5_UPLOAD_FILE_VIEW_NAME = "custom_upload_file"
 
 CKEDITOR_5_CONFIGS = {
@@ -232,3 +296,5 @@ CKEDITOR_5_CONFIGS = {
         },
     },
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
