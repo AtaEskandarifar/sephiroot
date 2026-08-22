@@ -1,29 +1,19 @@
 from pathlib import Path
-from decouple import Csv, config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --------------------------------------------------
 # Core
 # --------------------------------------------------
-SECRET_KEY = config(
-    "SECRET_KEY",
-    default="django-insecure-local-dev-key-change-this"
-)
+SECRET_KEY = "azinlrp5b57v+h(*)zom1b5&)e!!oj7+ycuc!7n+m_50^n50z@"
 
-DEBUG = config("DEBUG", default=True, cast=bool)
+DEBUG = False
 
-ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS",
-    default="127.0.0.1,localhost",
-    cast=Csv(),
-)
+ALLOWED_HOSTS = ['sephiroot.ir', 'www.sephiroot.ir']
 
-CSRF_TRUSTED_ORIGINS = config(
-    "CSRF_TRUSTED_ORIGINS",
-    default="http://127.0.0.1,http://localhost",
-    cast=Csv(),
-)
+CSRF_TRUSTED_ORIGINS = ['https://sephiroot.ir', 'https://www.sephiroot.ir']
+
+SITEMAP_BASE_URL = "https://sephiroot.ir"
 
 # --------------------------------------------------
 # Applications
@@ -59,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "home.middleware.VisitorCounterMiddleware",
 ]
 
 ROOT_URLCONF = "sephiroot.urls"
@@ -76,6 +67,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "home.context_processors.visitor_count",
             ],
         },
     },
@@ -88,30 +80,19 @@ WSGI_APPLICATION = "sephiroot.wsgi.application"
 # Local fallback: sqlite3
 # Production: MySQL if USE_SQLITE=False
 # --------------------------------------------------
-USE_SQLITE = config("USE_SQLITE", default=True, cast=bool)
-
-if USE_SQLITE:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "sephiroot_db",
+        "USER": "fucksociety00",
+        "PASSWORD": "Fscty7536!@#",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+        "OPTIONS": {
+            "charset": "utf8mb4",
+        },
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": config("DB_NAME"),
-            "USER": config("DB_USER"),
-            "PASSWORD": config("DB_PASSWORD"),
-            "HOST": config("DB_HOST", default="127.0.0.1"),
-            "PORT": config("DB_PORT", default="3306"),
-            "OPTIONS": {
-                "charset": "utf8mb4",
-            },
-        }
-    }
-
+}
 # --------------------------------------------------
 # Password validation
 # --------------------------------------------------
@@ -159,34 +140,20 @@ SITE_ID = 1
 # --------------------------------------------------
 # Security
 # --------------------------------------------------
-SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=not DEBUG, cast=bool)
-SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", default=not DEBUG, cast=bool)
-CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", default=not DEBUG, cast=bool)
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-SECURE_HSTS_SECONDS = config(
-    "SECURE_HSTS_SECONDS",
-    default=31536000 if not DEBUG else 0,
-    cast=int,
-)
-SECURE_HSTS_INCLUDE_SUBDOMAINS = config(
-    "SECURE_HSTS_INCLUDE_SUBDOMAINS",
-    default=not DEBUG,
-    cast=bool,
-)
-SECURE_HSTS_PRELOAD = config(
-    "SECURE_HSTS_PRELOAD",
-    default=not DEBUG,
-    cast=bool,
-)
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 X_FRAME_OPTIONS = "DENY"
 
-# فقط وقتی پشت reverse proxy مثل Nginx هستی
-if not DEBUG:
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_BROWSER_XSS_FILTER = True
 # --------------------------------------------------
 # CKEditor
 # --------------------------------------------------

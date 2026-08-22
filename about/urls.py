@@ -1,6 +1,4 @@
 from django.urls import path
-
-from sephiroot import urls
 from .views import *
 
 app_name = 'about'

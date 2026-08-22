@@ -1,9 +1,19 @@
 {% load static %}
 <div class="cm-footer">
     <div class="cm-footer-content mode">
-        <p>طراح :  <a href="{% url 'home:home' %}">عطا‌اسکندری‌فر</a></p>
-        <a href="#top"><img src="{% static 'assets/img/icons/arrow-top.svg' %}" alt="arrow-top" width="13" height="25" class="svg" fetchpriority="high" decoding="async">
-        </a>
+        <p>طراح و توسعه‌دهنده:  <a href="{% url 'home:home' %}">عطا‌اسکندری‌فر</a></p>
+        <div class="footer-stats">
+            <div class="visitor-badge">
+                <span class="visitor-pulse" aria-hidden="true"></span>
+                <svg class="visitor-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span class="visitor-label">بازدیدکنندگان:</span>
+                <strong class="visitor-num">{{ visitor_count|default:"0" }}</strong>
+            </div>
+            <a href="#top"><img src="{% static 'assets/img/icons/arrow-top.svg' %}" alt="arrow-top" width="13" height="25" class="svg" fetchpriority="high" decoding="async"></a>
+        </div>
     </div>
 </div>
 

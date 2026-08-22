@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /j4x7kq9-mgt/
+Allow: /
+
+
+Sitemap: https://sephiroot.ir/sitemap.xml
+

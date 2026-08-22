@@ -18,9 +18,31 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from sephiroot.views import robots_txt
+
+from sephiroot.sitemaps import (
+    StaticViewSitemap,
+    BlogListViewSitemap,
+    BlogPostSitemap,
+    CategorySitemap,
+    TagSitemap,
+)
+
+
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "blog_list": BlogListViewSitemap,
+    "blog_posts": BlogPostSitemap,
+    "categories": CategorySitemap,
+    "tags": TagSitemap,
+}
+
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('qw8-ct_Fru/', admin.site.urls),
     path("ckeditor5/", include("django_ckeditor_5.urls")),
     path('', include('home.urls', namespace='home')),
     path('about/', include('about.urls', namespace='about')),
@@ -29,6 +51,8 @@ urlpatterns = [
     path('pricing/', include('pricing.urls', namespace='pricing')),
     path('blog/', include('blogs.urls', namespace='blog')),
     path('contacts/', include('contacts.urls', namespace='contact')),
+    path( "sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
+    path("robots.txt", robots_txt),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
